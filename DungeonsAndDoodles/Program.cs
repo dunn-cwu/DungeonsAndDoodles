@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CS446_Project_LivePrototype
+namespace DungeonsAndDoodles
 {
     static class Program
     {
