@@ -942,12 +942,14 @@ namespace DungeonsAndDoodles
         private void MapControl_MouseClick(object sender, MouseEventArgs e)
         {
             mouseDownTimer.Stop();
-            if (mouseDownTimer.ElapsedMilliseconds <= SELECT_TIME_FRAME)
+
+            if (mouseDownTimer.ElapsedMilliseconds <= SELECT_TIME_FRAME && e.Button == MouseButtons.Left)
             {
                 MapToken mapToken = getTokenUnderMouse(e.Location);
                 if (mapToken != null)
                 {
                     mapToken.Selected = !mapToken.Selected;
+                    tokenHoverToolTip.Active = false;
                 }
             }
 
