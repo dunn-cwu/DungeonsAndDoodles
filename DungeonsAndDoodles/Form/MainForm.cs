@@ -492,5 +492,11 @@ namespace DungeonsAndDoodles
             // Restore snap state
             mapControl.TokenSnapToGrid = savedSnapState;
         }
+
+        private void testTokenListItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestTokenListItemForm testForm = new TestTokenListItemForm(mapControl);
+            testForm.ShowDialog(this);
+        }
     }
 }

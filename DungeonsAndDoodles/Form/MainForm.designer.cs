@@ -85,6 +85,7 @@
             this.NumberOfSidesUpDown = new System.Windows.Forms.NumericUpDown();
             this.NumberOfDiceUpDown = new System.Windows.Forms.NumericUpDown();
             this.openMapImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.testTokenListItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -112,7 +113,8 @@
             // 
             this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.testTokenListItemToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(784, 24);
@@ -176,8 +178,8 @@
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 0;
-            this.mainSplitContainer.Size = new System.Drawing.Size(784, 537);
-            this.mainSplitContainer.SplitterDistance = 544;
+            this.mainSplitContainer.Size = new System.Drawing.Size(784, 538);
+            this.mainSplitContainer.SplitterDistance = 542;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -206,8 +208,8 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.NumberOfDiceUpDown);
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightPanelSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelSplitContainer_Panel2_Paint);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(232, 535);
-            this.rightPanelSplitContainer.SplitterDistance = 433;
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(234, 536);
+            this.rightPanelSplitContainer.SplitterDistance = 434;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
             // rightPanelTabControl
@@ -220,7 +222,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(232, 433);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(234, 434);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -234,7 +236,7 @@
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(224, 407);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(226, 408);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -351,7 +353,7 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(222, 407);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(224, 407);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -704,7 +706,7 @@
             // rollDiceBtn
             // 
             this.rollDiceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollDiceBtn.Location = new System.Drawing.Point(143, 40);
+            this.rollDiceBtn.Location = new System.Drawing.Point(145, 40);
             this.rollDiceBtn.Name = "rollDiceBtn";
             this.rollDiceBtn.Size = new System.Drawing.Size(54, 48);
             this.rollDiceBtn.TabIndex = 5;
@@ -741,7 +743,7 @@
             0,
             0});
             this.NumberOfSidesUpDown.Name = "NumberOfSidesUpDown";
-            this.NumberOfSidesUpDown.Size = new System.Drawing.Size(31, 20);
+            this.NumberOfSidesUpDown.Size = new System.Drawing.Size(33, 20);
             this.NumberOfSidesUpDown.TabIndex = 1;
             this.NumberOfSidesUpDown.Value = new decimal(new int[] {
             20,
@@ -765,7 +767,7 @@
             0,
             0});
             this.NumberOfDiceUpDown.Name = "NumberOfDiceUpDown";
-            this.NumberOfDiceUpDown.Size = new System.Drawing.Size(31, 20);
+            this.NumberOfDiceUpDown.Size = new System.Drawing.Size(33, 20);
             this.NumberOfDiceUpDown.TabIndex = 0;
             this.NumberOfDiceUpDown.Value = new decimal(new int[] {
             1,
@@ -778,11 +780,18 @@
             this.openMapImageDialog.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
             this.openMapImageDialog.RestoreDirectory = true;
             // 
+            // testTokenListItemToolStripMenuItem
+            // 
+            this.testTokenListItemToolStripMenuItem.Name = "testTokenListItemToolStripMenuItem";
+            this.testTokenListItemToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.testTokenListItemToolStripMenuItem.Text = "Test Token List Item";
+            this.testTokenListItemToolStripMenuItem.Click += new System.EventHandler(this.testTokenListItemToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
@@ -881,6 +890,7 @@
 		private System.Windows.Forms.Label diceRollOutputLabel;
 		private System.Windows.Forms.Button ExportTokenButton;
 		private System.Windows.Forms.Button TokenImportButton;
-	}
+        private System.Windows.Forms.ToolStripMenuItem testTokenListItemToolStripMenuItem;
+    }
 }
 
