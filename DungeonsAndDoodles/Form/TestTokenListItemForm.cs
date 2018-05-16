@@ -24,10 +24,17 @@ namespace DungeonsAndDoodles
         private void addCtrlBtn_Click(object sender, EventArgs e)
         {
             TokenData tokData = new TokenData("Test Token", TokenType.Player);
+            tokData.MaxHP = 100;
+            tokData.CurrentHP = 9;
             MapToken mapTok = new MapToken(mapCtrl, ref tokData, new PointF(0, 0));
             TokenListItemControl listCtrl = new TokenListItemControl(mapTok);
 
             testFlowContainer.Controls.Add(listCtrl);
+        }
+
+        private void TestTokenListItemForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

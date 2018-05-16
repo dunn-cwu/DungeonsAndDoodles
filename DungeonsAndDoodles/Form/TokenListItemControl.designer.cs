@@ -122,7 +122,7 @@
             this.HealthBox.Name = "HealthBox";
             this.HealthBox.Size = new System.Drawing.Size(166, 20);
             this.HealthBox.TabIndex = 8;
-            this.HealthBox.TextChanged += new System.EventHandler(this.HealthBox_TextChanged);
+            this.HealthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthBox_KeyDown);
             // 
             // HPPlus
             // 

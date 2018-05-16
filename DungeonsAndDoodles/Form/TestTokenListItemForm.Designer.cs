@@ -66,6 +66,7 @@
             this.Controls.Add(this.testFlowContainer);
             this.Name = "TestTokenListItemForm";
             this.Text = "TestTokenListItemForm";
+            this.Load += new System.EventHandler(this.TestTokenListItemForm_Load);
             this.ResumeLayout(false);
 
         }

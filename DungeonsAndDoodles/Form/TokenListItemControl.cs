@@ -14,9 +14,11 @@ namespace DungeonsAndDoodles
     {
         private MapToken token;
         private TokenData data;
-
+        private Boolean editMode;
         public TokenListItemControl(MapToken token)
         {
+           
+
             InitializeComponent();
 
             this.token = token;
@@ -41,7 +43,7 @@ namespace DungeonsAndDoodles
 
             HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
 
-            if (data.CurrentHP >= data.MaxHP / 3)
+            if (data.CurrentHP >= data.MaxHP / 2)
             {
                 HealthBox.BackColor = Color.Lime;
             }
@@ -80,6 +82,19 @@ namespace DungeonsAndDoodles
                 data.CurrentHP += 1;
 
                 HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
+
+                if (data.CurrentHP >= data.MaxHP / 2)
+                {
+                    HealthBox.BackColor = Color.Lime;
+                }
+                else if (data.CurrentHP >= data.MaxHP / 10)
+                {
+                    HealthBox.BackColor = Color.Orange;
+                }
+                else
+                {
+                    HealthBox.BackColor = Color.Red;
+                }
             }
         }
 
@@ -91,24 +106,12 @@ namespace DungeonsAndDoodles
                 data.CurrentHP -= 1;
 
                 HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-            }
-        }
 
-        private void HealthBox_TextChanged(object sender, EventArgs e)
-        {
-
-            try
-            {
-                if (Convert.ToInt32(HealthBox.Text) >= 0 || Convert.ToInt32(HealthBox.Text) <= data.MaxHP) { }
-
-                data.CurrentHP = Convert.ToInt32(HealthBox.Text);
-                HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-
-                if (data.CurrentHP >= data.MaxHP / 3)
+                if (data.CurrentHP >= data.MaxHP / 2)
                 {
                     HealthBox.BackColor = Color.Lime;
                 }
-                else if(data.CurrentHP >= data.MaxHP / 10)
+                else if (data.CurrentHP >= data.MaxHP / 10)
                 {
                     HealthBox.BackColor = Color.Orange;
                 }
@@ -117,11 +120,56 @@ namespace DungeonsAndDoodles
                     HealthBox.BackColor = Color.Red;
                 }
             }
+        }
+
+        private void HealthBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HealthBox_Click(object sender, EventArgs e)
+        {
+           //go to edit mode and edit box contents.
 
 
-            catch (Exception a)
+            
+            
+        }
+
+        private void HealthBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
             {
-                HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
+                //exit edit mode
+
+                try
+                {
+                    if (Convert.ToInt32(HealthBox.Text) >= 0 || Convert.ToInt32(HealthBox.Text) <= data.MaxHP) { }
+
+                    data.CurrentHP = Convert.ToInt32(HealthBox.Text);
+                    HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
+
+                    if (data.CurrentHP >= data.MaxHP / 3)
+                    {
+                        HealthBox.BackColor = Color.Lime;
+                    }
+                    else if (data.CurrentHP >= data.MaxHP / 10)
+                    {
+                        HealthBox.BackColor = Color.Orange;
+                    }
+                    else
+                    {
+                        HealthBox.BackColor = Color.Red;
+                    }
+                }
+
+
+                catch (Exception a)
+                {
+                    HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
+                }
+
+
             }
         }
     }
