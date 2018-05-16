@@ -45,14 +45,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Data\GameState.cs" />
+    <Compile Include="Data\MapToken.cs" />
+    <Compile Include="Data\MapTokenCollection.cs" />
+    <Compile Include="Data\TokenLibraryCollection.cs" />
+    <Compile Include="Form\EditTokenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Form\EditTokenForm.designer.cs">
+      <DependentUpon>EditTokenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\HoverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\HoverForm.designer.cs">
+      <DependentUpon>HoverForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\MapControl.designer.cs">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\TokenHoverToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\TokenListItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\TokenListItemControl.designer.cs">
+      <DependentUpon>TokenListItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ViewStatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ViewStatsForm.designer.cs">
+      <DependentUpon>ViewStatsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\EditTokenForm.resx">
+      <DependentUpon>EditTokenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\HoverForm.resx">
+      <DependentUpon>HoverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MapControl.resx">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\TokenListItemControl.resx">
+      <DependentUpon>TokenListItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ViewStatsForm.resx">
+      <DependentUpon>ViewStatsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,9 +126,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resource\zrnic_rg.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\testMap.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resource\testmap_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
