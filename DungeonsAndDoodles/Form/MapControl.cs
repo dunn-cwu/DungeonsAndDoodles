@@ -49,6 +49,7 @@ namespace DungeonsAndDoodles
         private float viewZoom = 1.0f;
         private float viewPosX = 0.0f;
         private float viewPosY = 0.0f;
+		private Color gridColor = Color.Black;
 
         public MapControl(GameState gameState)
         {
@@ -85,8 +86,18 @@ namespace DungeonsAndDoodles
             }
         }
 
-        // Returns true if a map background is set, otherwise false
-        public bool HasBackground
+		public Color GridLineColor
+		{
+			get { return gridColor; }
+			set
+			{
+				gridColor = value;
+				Refresh();
+			}
+		}
+
+		// Returns true if a map background is set, otherwise false
+		public bool HasBackground
         {
             get { return mapImage != null; }
         }
@@ -412,15 +423,16 @@ namespace DungeonsAndDoodles
             }
         }
 
+
         // Draws the grid lines in the map window viewport
         protected virtual void drawGridLines(PaintEventArgs e, ref RectangleF viewPortRect)
         {
             float firstVerticalLine = (float)Math.Floor(viewPortRect.Left);
             float firstHorizontalLine = (float)Math.Floor(viewPortRect.Top);
 
-            Pen pen = new Pen(Color.FromArgb(gridAlpha, 0, 0, 0), gridThickness);
+			Pen pen = new Pen(Color.FromArgb(gridAlpha, gridColor.R, gridColor.G, gridColor.B), gridThickness);
 
-            for (float x = firstVerticalLine + gridHorzOffset; x <= viewPortRect.Right; x++)
+			for (float x = firstVerticalLine + gridHorzOffset; x <= viewPortRect.Right; x++)
             {
                 Point topPos = UnitPosToPixelPos(x, viewPortRect.Top, viewPortRect);
                 Point botPos = UnitPosToPixelPos(x, viewPortRect.Bottom, viewPortRect);
@@ -957,7 +969,8 @@ namespace DungeonsAndDoodles
         }
 
         private void MapControl_MouseHover(object sender, EventArgs e)
-        {
+		{ 
+
         }
     }
 }
