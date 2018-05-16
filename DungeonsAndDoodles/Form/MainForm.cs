@@ -18,6 +18,7 @@ namespace DungeonsAndDoodles
         private MapControl mapControl;
         private GameState gameState;
         private int savedSplitterPos;
+        private bool savedSnapState = false;
 
         public MainForm()
         {
@@ -478,5 +479,18 @@ namespace DungeonsAndDoodles
 		{
 
 		}
-	}
+
+        private void gridScaleSlider_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Save snap state and disable snapping while the grid scale is being adjusted
+            savedSnapState = mapControl.TokenSnapToGrid;
+            mapControl.TokenSnapToGrid = false;
+        }
+
+        private void gridScaleSlider_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Restore snap state
+            mapControl.TokenSnapToGrid = savedSnapState;
+        }
+    }
 }
