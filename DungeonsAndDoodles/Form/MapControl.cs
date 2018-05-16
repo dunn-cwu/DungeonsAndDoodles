@@ -177,8 +177,17 @@ namespace DungeonsAndDoodles
             get { return gridHorzOffset; }
             set
             {
-                // Make sure value is within range [-1.0, 1.0]
-                gridHorzOffset = value - (float)Math.Truncate(value);
+                gridHorzOffset = value;
+
+                while (gridHorzOffset > 0.5f)
+                {
+                    gridHorzOffset -= 1.0f;
+                }
+
+                while (gridHorzOffset < -0.5f)
+                {
+                    gridHorzOffset += 1.0f;
+                }
 
 				foreach (MapToken token in gameState.ActiveTokens)
 					token.Position = token.Position;
@@ -194,9 +203,19 @@ namespace DungeonsAndDoodles
             set
             {
                 // Make sure value is within range [-1.0, 1.0]
-                gridVertOffset = value - (float)Math.Truncate(value);
+                gridVertOffset = value;
 
-				foreach (MapToken token in gameState.ActiveTokens)
+                while (gridVertOffset > 0.5f)
+                {
+                    gridVertOffset -= 1.0f;
+                }
+
+                while (gridVertOffset < -0.5f)
+                {
+                    gridVertOffset += 1.0f;
+                }
+
+                foreach (MapToken token in gameState.ActiveTokens)
 					token.Position = token.Position;
 
 				Refresh();

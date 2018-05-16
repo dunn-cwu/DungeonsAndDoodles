@@ -221,8 +221,30 @@ namespace DungeonsAndDoodles
 
                 if (mapCtrl.TokenSnapToGrid)
                 {
-                    newPos.X = (float)Math.Floor(newPos.X) + 0.5f + mapCtrl.GridHorizontalOffset;
-                    newPos.Y = (float)Math.Floor(newPos.Y) + 0.5f + mapCtrl.GridVerticalOffset;
+                    // Snap token to nearest grid square
+                    newPos.X = (float)Math.Floor(newPos.X - mapCtrl.GridHorizontalOffset) + 0.5f + mapCtrl.GridHorizontalOffset;
+                    newPos.Y = (float)Math.Floor(newPos.Y - mapCtrl.GridVerticalOffset) + 0.5f + mapCtrl.GridVerticalOffset;
+
+                    // Walk token back onto map
+                    while(newPos.X < 0)
+                    {
+                        newPos.X += 1.0f;
+                    }
+
+                    while (newPos.X > worldRect.Right)
+                    {
+                        newPos.X -= 1.0f;
+                    }
+
+                    while (newPos.Y < 0)
+                    {
+                        newPos.Y += 1.0f;
+                    }
+
+                    while (newPos.Y > worldRect.Bottom)
+                    {
+                        newPos.Y -= 1.0f;
+                    }
                 }
 
                 if (!position.Equals(newPos))

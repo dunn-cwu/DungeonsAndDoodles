@@ -177,7 +177,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 0;
             this.mainSplitContainer.Size = new System.Drawing.Size(784, 537);
-            this.mainSplitContainer.SplitterDistance = 548;
+            this.mainSplitContainer.SplitterDistance = 546;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -206,7 +206,7 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.NumberOfDiceUpDown);
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightPanelSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelSplitContainer_Panel2_Paint);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(228, 535);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(230, 535);
             this.rightPanelSplitContainer.SplitterDistance = 433;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -220,7 +220,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(228, 433);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(230, 433);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -233,8 +233,8 @@
             this.activeTokensTabPage.Controls.Add(this.snapTokensToGridCheckbox);
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
-            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(220, 407);
+            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(222, 407);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -350,7 +350,7 @@
             this.tokenLibraryTabPage.Controls.Add(this.newLibTokenBtn);
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
-            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.tokenLibraryTabPage.Size = new System.Drawing.Size(220, 407);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
@@ -359,7 +359,7 @@
             // ExportTokenButton
             // 
             this.ExportTokenButton.Location = new System.Drawing.Point(110, 383);
-            this.ExportTokenButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ExportTokenButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExportTokenButton.Name = "ExportTokenButton";
             this.ExportTokenButton.Size = new System.Drawing.Size(97, 19);
             this.ExportTokenButton.TabIndex = 10;
@@ -369,7 +369,7 @@
             // TokenImportButton
             // 
             this.TokenImportButton.Location = new System.Drawing.Point(6, 383);
-            this.TokenImportButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TokenImportButton.Margin = new System.Windows.Forms.Padding(2);
             this.TokenImportButton.Name = "TokenImportButton";
             this.TokenImportButton.Size = new System.Drawing.Size(92, 19);
             this.TokenImportButton.TabIndex = 9;
@@ -474,8 +474,8 @@
             this.mapTabPage.Controls.Add(this.loadMapBackgroundBtn);
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
-            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.mapTabPage.Size = new System.Drawing.Size(220, 407);
+            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.mapTabPage.Size = new System.Drawing.Size(222, 407);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -497,7 +497,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(9, 125);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 283);
+            this.groupBox1.Size = new System.Drawing.Size(206, 283);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -564,7 +564,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(9, 242);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(189, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(191, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -586,7 +586,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(9, 188);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(189, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(191, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -608,7 +608,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(189, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(191, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -633,7 +633,7 @@
             this.viewGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewGroupBox.Location = new System.Drawing.Point(9, 39);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(204, 80);
+            this.viewGroupBox.Size = new System.Drawing.Size(206, 80);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -702,7 +702,7 @@
             // rollDiceBtn
             // 
             this.rollDiceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollDiceBtn.Location = new System.Drawing.Point(139, 40);
+            this.rollDiceBtn.Location = new System.Drawing.Point(141, 40);
             this.rollDiceBtn.Name = "rollDiceBtn";
             this.rollDiceBtn.Size = new System.Drawing.Size(54, 48);
             this.rollDiceBtn.TabIndex = 5;
@@ -739,7 +739,7 @@
             0,
             0});
             this.NumberOfSidesUpDown.Name = "NumberOfSidesUpDown";
-            this.NumberOfSidesUpDown.Size = new System.Drawing.Size(27, 20);
+            this.NumberOfSidesUpDown.Size = new System.Drawing.Size(29, 20);
             this.NumberOfSidesUpDown.TabIndex = 1;
             this.NumberOfSidesUpDown.Value = new decimal(new int[] {
             20,
@@ -763,7 +763,7 @@
             0,
             0});
             this.NumberOfDiceUpDown.Name = "NumberOfDiceUpDown";
-            this.NumberOfDiceUpDown.Size = new System.Drawing.Size(27, 20);
+            this.NumberOfDiceUpDown.Size = new System.Drawing.Size(29, 20);
             this.NumberOfDiceUpDown.TabIndex = 0;
             this.NumberOfDiceUpDown.Value = new decimal(new int[] {
             1,
