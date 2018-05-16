@@ -498,5 +498,15 @@ namespace DungeonsAndDoodles
             TestTokenListItemForm testForm = new TestTokenListItemForm(mapControl);
             testForm.ShowDialog(this);
         }
-    }
+		
+
+		private void ToggleLineColorButton_Click(object sender, EventArgs e)
+		{
+			if (mapControl.GridLineColor == Color.Black)
+				mapControl.GridLineColor = Color.White;
+			else
+				mapControl.GridLineColor = Color.Black;
+
+		}
+	}
 }
