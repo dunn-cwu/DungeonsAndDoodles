@@ -1,4 +1,4 @@
-﻿namespace DungeonsAndDoodles
+﻿namespace CS446_Project_LivePrototype
 {
     partial class HoverForm
     {

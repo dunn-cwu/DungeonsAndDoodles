@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DungeonsAndDoodles
+namespace CS446_Project_LivePrototype
 {
     public partial class HoverForm : Form
     {
