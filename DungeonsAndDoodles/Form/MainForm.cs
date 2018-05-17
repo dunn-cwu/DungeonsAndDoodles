@@ -78,6 +78,7 @@ namespace DungeonsAndDoodles
         {
             int closedPos = mainSplitContainer.Width - mainSplitContainer.SplitterWidth;
 
+			
             if (mainSplitContainer.SplitterDistance >= closedPos)
             {
                 mainSplitContainer.SplitterDistance = mainSplitContainer.Width - savedSplitterPos;
