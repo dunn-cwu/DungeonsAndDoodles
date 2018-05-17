@@ -508,5 +508,10 @@ namespace DungeonsAndDoodles
 				mapControl.GridLineColor = Color.Black;
 
 		}
+
+		private void viewGroupBox_Enter(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
