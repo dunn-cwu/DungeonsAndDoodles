@@ -252,7 +252,7 @@
 			this.activeTokensTabPage.Margin = new System.Windows.Forms.Padding(4);
 			this.activeTokensTabPage.Name = "activeTokensTabPage";
 			this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(4);
-			this.activeTokensTabPage.Size = new System.Drawing.Size(300, 518);
+			this.activeTokensTabPage.Size = new System.Drawing.Size(311, 499);
 			this.activeTokensTabPage.TabIndex = 0;
 			this.activeTokensTabPage.Text = "Active Tokens";
 			this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@
 			this.tokenLibraryTabPage.Margin = new System.Windows.Forms.Padding(4);
 			this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
 			this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(4);
-			this.tokenLibraryTabPage.Size = new System.Drawing.Size(300, 518);
+			this.tokenLibraryTabPage.Size = new System.Drawing.Size(311, 499);
 			this.tokenLibraryTabPage.TabIndex = 1;
 			this.tokenLibraryTabPage.Text = "Token Library";
 			this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -853,6 +853,7 @@
 			// 
 			// LibraryPanel
 			// 
+			this.LibraryPanel.AutoScroll = true;
 			this.LibraryPanel.Controls.Add(this.ExportTokenButton);
 			this.LibraryPanel.Controls.Add(this.tokenLibList);
 			this.LibraryPanel.Controls.Add(this.TokenImportButton);
@@ -863,11 +864,12 @@
 			this.LibraryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.LibraryPanel.Location = new System.Drawing.Point(4, 4);
 			this.LibraryPanel.Name = "LibraryPanel";
-			this.LibraryPanel.Size = new System.Drawing.Size(292, 510);
+			this.LibraryPanel.Size = new System.Drawing.Size(303, 491);
 			this.LibraryPanel.TabIndex = 0;
 			// 
 			// ActiveTokensPanel
 			// 
+			this.ActiveTokensPanel.AutoScroll = true;
 			this.ActiveTokensPanel.Controls.Add(this.actTokRemoveBtn);
 			this.ActiveTokensPanel.Controls.Add(this.activeTokensList);
 			this.ActiveTokensPanel.Controls.Add(this.actTokEditBtn);
@@ -877,7 +879,7 @@
 			this.ActiveTokensPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ActiveTokensPanel.Location = new System.Drawing.Point(4, 4);
 			this.ActiveTokensPanel.Name = "ActiveTokensPanel";
-			this.ActiveTokensPanel.Size = new System.Drawing.Size(292, 510);
+			this.ActiveTokensPanel.Size = new System.Drawing.Size(303, 491);
 			this.ActiveTokensPanel.TabIndex = 0;
 			// 
 			// MainForm
