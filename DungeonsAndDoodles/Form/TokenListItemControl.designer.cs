@@ -45,7 +45,7 @@
             // 
             this.TokenName.AutoSize = true;
             this.TokenName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TokenName.Location = new System.Drawing.Point(15, 7);
+            this.TokenName.Location = new System.Drawing.Point(4, 2);
             this.TokenName.Name = "TokenName";
             this.TokenName.Size = new System.Drawing.Size(51, 20);
             this.TokenName.TabIndex = 0;
@@ -55,7 +55,7 @@
             // ACLabel
             // 
             this.ACLabel.AutoSize = true;
-            this.ACLabel.Location = new System.Drawing.Point(84, 10);
+            this.ACLabel.Location = new System.Drawing.Point(100, 50);
             this.ACLabel.Name = "ACLabel";
             this.ACLabel.Size = new System.Drawing.Size(27, 13);
             this.ACLabel.TabIndex = 1;
@@ -64,7 +64,7 @@
             // TokenStrength
             // 
             this.TokenStrength.AutoSize = true;
-            this.TokenStrength.Location = new System.Drawing.Point(82, 39);
+            this.TokenStrength.Location = new System.Drawing.Point(155, 50);
             this.TokenStrength.Name = "TokenStrength";
             this.TokenStrength.Size = new System.Drawing.Size(35, 13);
             this.TokenStrength.TabIndex = 2;
@@ -73,7 +73,7 @@
             // TokenDexterity
             // 
             this.TokenDexterity.AutoSize = true;
-            this.TokenDexterity.Location = new System.Drawing.Point(162, 39);
+            this.TokenDexterity.Location = new System.Drawing.Point(220, 50);
             this.TokenDexterity.Name = "TokenDexterity";
             this.TokenDexterity.Size = new System.Drawing.Size(35, 13);
             this.TokenDexterity.TabIndex = 3;
@@ -82,7 +82,7 @@
             // TokenConstitution
             // 
             this.TokenConstitution.AutoSize = true;
-            this.TokenConstitution.Location = new System.Drawing.Point(251, 39);
+            this.TokenConstitution.Location = new System.Drawing.Point(285, 50);
             this.TokenConstitution.Name = "TokenConstitution";
             this.TokenConstitution.Size = new System.Drawing.Size(35, 13);
             this.TokenConstitution.TabIndex = 4;
@@ -91,7 +91,7 @@
             // TokenIntelligence
             // 
             this.TokenIntelligence.AutoSize = true;
-            this.TokenIntelligence.Location = new System.Drawing.Point(82, 64);
+            this.TokenIntelligence.Location = new System.Drawing.Point(155, 70);
             this.TokenIntelligence.Name = "TokenIntelligence";
             this.TokenIntelligence.Size = new System.Drawing.Size(35, 13);
             this.TokenIntelligence.TabIndex = 5;
@@ -100,7 +100,7 @@
             // TokenWisdom
             // 
             this.TokenWisdom.AutoSize = true;
-            this.TokenWisdom.Location = new System.Drawing.Point(162, 64);
+            this.TokenWisdom.Location = new System.Drawing.Point(220, 70);
             this.TokenWisdom.Name = "TokenWisdom";
             this.TokenWisdom.Size = new System.Drawing.Size(35, 13);
             this.TokenWisdom.TabIndex = 6;
@@ -110,7 +110,7 @@
             // TokenCharisma
             // 
             this.TokenCharisma.AutoSize = true;
-            this.TokenCharisma.Location = new System.Drawing.Point(251, 64);
+            this.TokenCharisma.Location = new System.Drawing.Point(285, 70);
             this.TokenCharisma.Name = "TokenCharisma";
             this.TokenCharisma.Size = new System.Drawing.Size(35, 13);
             this.TokenCharisma.TabIndex = 7;
@@ -118,7 +118,7 @@
             // 
             // HealthBox
             // 
-            this.HealthBox.Location = new System.Drawing.Point(155, 6);
+            this.HealthBox.Location = new System.Drawing.Point(155, 20);
             this.HealthBox.Name = "HealthBox";
             this.HealthBox.Size = new System.Drawing.Size(166, 20);
             this.HealthBox.TabIndex = 8;
@@ -126,7 +126,7 @@
             // 
             // HPPlus
             // 
-            this.HPPlus.Location = new System.Drawing.Point(323, 5);
+            this.HPPlus.Location = new System.Drawing.Point(323, 20);
             this.HPPlus.Name = "HPPlus";
             this.HPPlus.Size = new System.Drawing.Size(22, 22);
             this.HPPlus.TabIndex = 9;
@@ -136,7 +136,7 @@
             // 
             // HPMinus
             // 
-            this.HPMinus.Location = new System.Drawing.Point(131, 5);
+            this.HPMinus.Location = new System.Drawing.Point(131, 20);
             this.HPMinus.Name = "HPMinus";
             this.HPMinus.Size = new System.Drawing.Size(22, 22);
             this.HPMinus.TabIndex = 10;
