@@ -334,12 +334,12 @@
             // 
             // ExportTokenButton
             // 
-            this.ExportTokenButton.Location = new System.Drawing.Point(111, 385);
+            this.ExportTokenButton.Location = new System.Drawing.Point(114, 374);
             this.ExportTokenButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExportTokenButton.Name = "ExportTokenButton";
-            this.ExportTokenButton.Size = new System.Drawing.Size(97, 19);
+            this.ExportTokenButton.Size = new System.Drawing.Size(97, 23);
             this.ExportTokenButton.TabIndex = 10;
-            this.ExportTokenButton.Text = "Export";
+            this.ExportTokenButton.Text = "Export Token";
             this.ExportTokenButton.UseVisualStyleBackColor = true;
             // 
             // tokenLibList
@@ -347,24 +347,24 @@
             this.tokenLibList.FormattingEnabled = true;
             this.tokenLibList.Location = new System.Drawing.Point(7, 62);
             this.tokenLibList.Name = "tokenLibList";
-            this.tokenLibList.Size = new System.Drawing.Size(204, 290);
+            this.tokenLibList.Size = new System.Drawing.Size(204, 277);
             this.tokenLibList.TabIndex = 2;
             this.tokenLibList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tokenLibList_KeyDown);
             this.tokenLibList.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tokenLibList_PreviewKeyDown);
             // 
             // TokenImportButton
             // 
-            this.TokenImportButton.Location = new System.Drawing.Point(7, 385);
+            this.TokenImportButton.Location = new System.Drawing.Point(7, 374);
             this.TokenImportButton.Margin = new System.Windows.Forms.Padding(2);
             this.TokenImportButton.Name = "TokenImportButton";
-            this.TokenImportButton.Size = new System.Drawing.Size(92, 19);
+            this.TokenImportButton.Size = new System.Drawing.Size(92, 23);
             this.TokenImportButton.TabIndex = 9;
             this.TokenImportButton.Text = "Import Token";
             this.TokenImportButton.UseVisualStyleBackColor = true;
             // 
             // newLibTokenBtn
             // 
-            this.newLibTokenBtn.Location = new System.Drawing.Point(147, 357);
+            this.newLibTokenBtn.Location = new System.Drawing.Point(147, 346);
             this.newLibTokenBtn.Name = "newLibTokenBtn";
             this.newLibTokenBtn.Size = new System.Drawing.Size(64, 23);
             this.newLibTokenBtn.TabIndex = 0;
@@ -374,7 +374,7 @@
             // 
             // editLibTokenBtn
             // 
-            this.editLibTokenBtn.Location = new System.Drawing.Point(76, 357);
+            this.editLibTokenBtn.Location = new System.Drawing.Point(77, 346);
             this.editLibTokenBtn.Name = "editLibTokenBtn";
             this.editLibTokenBtn.Size = new System.Drawing.Size(64, 23);
             this.editLibTokenBtn.TabIndex = 4;
@@ -435,7 +435,7 @@
             // 
             // placeTokenOnMapBtn
             // 
-            this.placeTokenOnMapBtn.Location = new System.Drawing.Point(7, 357);
+            this.placeTokenOnMapBtn.Location = new System.Drawing.Point(7, 346);
             this.placeTokenOnMapBtn.Name = "placeTokenOnMapBtn";
             this.placeTokenOnMapBtn.Size = new System.Drawing.Size(64, 23);
             this.placeTokenOnMapBtn.TabIndex = 3;
@@ -500,7 +500,7 @@
             // 
             // ToggleLineColorButton
             // 
-            this.ToggleLineColorButton.Location = new System.Drawing.Point(9, 295);
+            this.ToggleLineColorButton.Location = new System.Drawing.Point(9, 279);
             this.ToggleLineColorButton.Margin = new System.Windows.Forms.Padding(2);
             this.ToggleLineColorButton.Name = "ToggleLineColorButton";
             this.ToggleLineColorButton.Size = new System.Drawing.Size(120, 23);
