@@ -182,6 +182,7 @@ namespace DungeonsAndDoodles
             this.mapCtrl = other.mapCtrl;
             this.tokenData = new TokenData(ref otherTokenData);
             this.position = other.Position;
+            this.control = new TokenListItemControl(this);
         }
 
         public TokenData GetTokenData()
