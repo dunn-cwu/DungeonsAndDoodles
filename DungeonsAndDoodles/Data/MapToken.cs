@@ -36,6 +36,7 @@ namespace DungeonsAndDoodles
         public int Intelligence;
         public int Wisdom;
         public int Charisma;
+        public string PictureFileName;
 
         public string Notes;
 
@@ -54,6 +55,7 @@ namespace DungeonsAndDoodles
             this.Wisdom = 10;
             this.Charisma = 10;
             this.Notes = "";
+            this.PictureFileName = "";
         }
 
         // Copy constructor
@@ -72,7 +74,9 @@ namespace DungeonsAndDoodles
             this.Wisdom = other.Wisdom;
             this.Charisma = other.Charisma;
             this.Notes = other.Notes;
+            this.PictureFileName = other.PictureFileName;
         }
+
 
         public string Name
         {
@@ -153,8 +157,10 @@ namespace DungeonsAndDoodles
         protected PointF position;
         protected bool selected = false;
         protected float scale = 1.0f;
+        protected Image charImage= null;
 
         protected ViewStatsForm viewStatsForm;
+
 
         public MapToken(MapControl mapCtrl, ref TokenData tokenData, PointF mapPosition)
         {
@@ -162,6 +168,8 @@ namespace DungeonsAndDoodles
             this.tokenData = new TokenData(ref tokenData);
             this.position = mapPosition;
         }
+
+        
 
         // Copy constructor
         public MapToken(MapToken other)
@@ -181,6 +189,8 @@ namespace DungeonsAndDoodles
         public void SetTokenData(ref TokenData otherData)
         {
             this.tokenData = new TokenData(ref otherData);
+            resetSprite();
+            mapCtrl.Refresh();
         }
 
         public int CurrentHP
@@ -283,6 +293,32 @@ namespace DungeonsAndDoodles
             // Token is offscreen, so no need to draw it
             if (!viewportRect.IntersectsWith(tokenRect)) { return; }
 
+            bool loaded = charImage != null;
+
+            if(!loaded)
+            {
+                loaded = loadTokenImage();
+            }
+
+            if (!loaded)
+            {
+                DrawBasicToken(graphics, ref viewportRect, ref tokenRect);
+            }
+            else
+            {
+                DrawSpriteToken(graphics, ref viewportRect, ref tokenRect);
+            }
+        }
+
+        public void DrawSpriteToken(Graphics graphics, ref RectangleF viewportRect, ref RectangleF tokenRect)
+        {
+            Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
+
+            graphics.DrawImage(charImage, pixelRect);
+        }
+
+        public void DrawBasicToken(Graphics graphics, ref RectangleF viewportRect, ref RectangleF tokenRect)
+        {
             Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
             Point pixelPos = mapCtrl.UnitPosToPixelPos(position.X, position.Y, viewportRect);
 
@@ -313,7 +349,7 @@ namespace DungeonsAndDoodles
             {
                 outlinePen = new Pen(Color.Black, 4.0f);
             }
-            
+
             // Placeholder graphics.
             // TODO: Draw token image
             graphics.FillEllipse(baseBrush, pixelRect);
@@ -387,9 +423,39 @@ namespace DungeonsAndDoodles
             }
         }
 
+        public void resetSprite()
+        {
+            if (charImage != null)
+            {
+                charImage.Dispose();
+                charImage = null;
+            }
+        }
+
         public override string ToString()
         {
             return tokenData.Name;
         }
+
+
+        private bool loadTokenImage()
+        {
+            try {
+                if (charImage != null)
+                {
+                    charImage.Dispose();
+                    charImage = null;
+                }
+
+                charImage = Bitmap.FromFile(tokenData.PictureFileName);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
+
 }

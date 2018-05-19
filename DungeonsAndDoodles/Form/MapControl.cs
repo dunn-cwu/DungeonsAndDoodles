@@ -405,7 +405,7 @@ namespace DungeonsAndDoodles
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
                 e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-                e.Graphics.Clear(Color.LightBlue);
+                e.Graphics.Clear(Color.FromArgb(255, 247, 229, 236));
 
                 if (mapImageSized != null)
                 {

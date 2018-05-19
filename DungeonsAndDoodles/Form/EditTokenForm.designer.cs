@@ -56,6 +56,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.getImageBrowser = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charPic)).BeginInit();
             this.CharStats.SuspendLayout();
@@ -121,8 +122,10 @@
             this.charPic.Location = new System.Drawing.Point(12, 12);
             this.charPic.Name = "charPic";
             this.charPic.Size = new System.Drawing.Size(145, 145);
+            this.charPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.charPic.TabIndex = 2;
             this.charPic.TabStop = false;
+            this.charPic.DoubleClick += new System.EventHandler(this.charPic_DoubleClick);
             // 
             // tokenNameBox
             // 
@@ -391,6 +394,10 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // getImageBrowser
+            // 
+            this.getImageBrowser.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
+            // 
             // EditTokenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,5 +464,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.OpenFileDialog getImageBrowser;
     }
 }

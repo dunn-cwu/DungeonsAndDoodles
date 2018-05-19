@@ -25,9 +25,7 @@ namespace DungeonsAndDoodles
 
             this.data = token.GetTokenData();
 
-            TokenName.Text = data.Name;
-
-            ACLabel.Text = "AC: " + data.ArmorClass;
+            TokenName.Text = data.Name + "     AC: " + data.ArmorClass;
 
             TokenStrength.Text = "STR: " + data.Strength;
 
@@ -64,10 +62,7 @@ namespace DungeonsAndDoodles
 
         }
 
-        private void TokenName_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -172,5 +167,7 @@ namespace DungeonsAndDoodles
 
             }
         }
+
+
     }
 }

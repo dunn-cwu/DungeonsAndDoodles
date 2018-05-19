@@ -23,7 +23,7 @@ namespace DungeonsAndDoodles
 
         private void addCtrlBtn_Click(object sender, EventArgs e)
         {
-            TokenData tokData = new TokenData("Test Token", TokenType.Player);
+            TokenData tokData = new TokenData("Cornealeous Pumpernickle III", TokenType.Player);
             tokData.MaxHP = 100;
             tokData.CurrentHP = 9;
             MapToken mapTok = new MapToken(mapCtrl, ref tokData, new PointF(0, 0));

@@ -14,6 +14,8 @@ namespace DungeonsAndDoodles
     {
         private GameState gameState = null;
         private bool editingExistingToken = false;
+        private string image = "";
+
 
         public EditTokenForm(GameState gameState)
         {
@@ -59,6 +61,10 @@ namespace DungeonsAndDoodles
             enemyType_rad.Enabled = false;
             NPCtype_rad.Enabled = false;
 
+            image = data.PictureFileName;
+
+            loadImage();
+
             editingExistingToken = true;
         }
 
@@ -79,6 +85,7 @@ namespace DungeonsAndDoodles
             data.Constitution = (int)tokenConstBox.Value;
             data.Charisma = (int)tokenChrBox.Value;
             data.Notes = charNotesBox.Text;
+            data.PictureFileName = image;
 
             return data;
         }
@@ -108,6 +115,28 @@ namespace DungeonsAndDoodles
             this.DialogResult = DialogResult.Cancel;
 
             this.Close();
+        }
+
+        private void charPic_DoubleClick(object sender, EventArgs e)
+        {
+            if(getImageBrowser.ShowDialog(this) == DialogResult.OK)
+            {
+                image = getImageBrowser.FileName;
+                loadImage();
+            }
+        }
+
+        private void loadImage()
+        {
+            if (charPic.Image != null)
+            {
+                charPic.Image.Dispose();
+                charPic.Image = null;
+            }
+
+            if (image == "") { return; }
+
+            charPic.Image = Bitmap.FromFile(image);
         }
     }
 }
