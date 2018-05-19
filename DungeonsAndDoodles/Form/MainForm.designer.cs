@@ -33,8 +33,8 @@
             this.rightPanelTabControl = new System.Windows.Forms.TabControl();
             this.activeTokensTabPage = new System.Windows.Forms.TabPage();
             this.ActiveTokensPanel = new System.Windows.Forms.Panel();
+            this.activeTokenFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.actTokRemoveBtn = new System.Windows.Forms.Button();
-            this.activeTokensList = new System.Windows.Forms.ListBox();
             this.actTokEditBtn = new System.Windows.Forms.Button();
             this.snapTokensToGridCheckbox = new System.Windows.Forms.CheckBox();
             this.actTokLocateBtn = new System.Windows.Forms.Button();
@@ -131,7 +131,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 0;
             this.mainSplitContainer.Size = new System.Drawing.Size(797, 566);
-            this.mainSplitContainer.SplitterDistance = 495;
+            this.mainSplitContainer.SplitterDistance = 489;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -160,7 +160,7 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.NumberOfDiceUpDown);
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightPanelSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelSplitContainer_Panel2_Paint);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(294, 564);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(300, 564);
             this.rightPanelSplitContainer.SplitterDistance = 441;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -174,7 +174,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(294, 441);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(300, 441);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -183,7 +183,7 @@
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(286, 415);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(292, 415);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -191,8 +191,8 @@
             // ActiveTokensPanel
             // 
             this.ActiveTokensPanel.AutoScroll = true;
+            this.ActiveTokensPanel.Controls.Add(this.activeTokenFlowPanel);
             this.ActiveTokensPanel.Controls.Add(this.actTokRemoveBtn);
-            this.ActiveTokensPanel.Controls.Add(this.activeTokensList);
             this.ActiveTokensPanel.Controls.Add(this.actTokEditBtn);
             this.ActiveTokensPanel.Controls.Add(this.snapTokensToGridCheckbox);
             this.ActiveTokensPanel.Controls.Add(this.actTokLocateBtn);
@@ -201,8 +201,21 @@
             this.ActiveTokensPanel.Location = new System.Drawing.Point(3, 3);
             this.ActiveTokensPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ActiveTokensPanel.Name = "ActiveTokensPanel";
-            this.ActiveTokensPanel.Size = new System.Drawing.Size(280, 409);
+            this.ActiveTokensPanel.Size = new System.Drawing.Size(286, 409);
             this.ActiveTokensPanel.TabIndex = 0;
+            // 
+            // activeTokenFlowPanel
+            // 
+            this.activeTokenFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.activeTokenFlowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.activeTokenFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.activeTokenFlowPanel.Location = new System.Drawing.Point(13, 61);
+            this.activeTokenFlowPanel.Name = "activeTokenFlowPanel";
+            this.activeTokenFlowPanel.Size = new System.Drawing.Size(267, 290);
+            this.activeTokenFlowPanel.TabIndex = 7;
+            this.activeTokenFlowPanel.WrapContents = false;
             // 
             // actTokRemoveBtn
             // 
@@ -214,14 +227,6 @@
             this.actTokRemoveBtn.UseVisualStyleBackColor = true;
             this.actTokRemoveBtn.Click += new System.EventHandler(this.actTokRemoveBtn_Click);
             // 
-            // activeTokensList
-            // 
-            this.activeTokensList.FormattingEnabled = true;
-            this.activeTokensList.Location = new System.Drawing.Point(7, 61);
-            this.activeTokensList.Name = "activeTokensList";
-            this.activeTokensList.Size = new System.Drawing.Size(204, 290);
-            this.activeTokensList.TabIndex = 3;
-            // 
             // actTokEditBtn
             // 
             this.actTokEditBtn.Location = new System.Drawing.Point(76, 357);
@@ -230,7 +235,6 @@
             this.actTokEditBtn.TabIndex = 5;
             this.actTokEditBtn.Text = "Edit ...";
             this.actTokEditBtn.UseVisualStyleBackColor = true;
-            this.actTokEditBtn.Click += new System.EventHandler(this.actTokEditBtn_Click);
             // 
             // snapTokensToGridCheckbox
             // 
@@ -310,7 +314,7 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(286, 415);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(292, 415);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -329,7 +333,7 @@
             this.LibraryPanel.Location = new System.Drawing.Point(3, 3);
             this.LibraryPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LibraryPanel.Name = "LibraryPanel";
-            this.LibraryPanel.Size = new System.Drawing.Size(280, 409);
+            this.LibraryPanel.Size = new System.Drawing.Size(286, 409);
             this.LibraryPanel.TabIndex = 0;
             // 
             // ExportTokenButton
@@ -449,7 +453,7 @@
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
             this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(286, 415);
+            this.mapTabPage.Size = new System.Drawing.Size(292, 415);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -464,7 +468,7 @@
             this.MapPanel.Location = new System.Drawing.Point(3, 3);
             this.MapPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MapPanel.Name = "MapPanel";
-            this.MapPanel.Size = new System.Drawing.Size(280, 409);
+            this.MapPanel.Size = new System.Drawing.Size(286, 409);
             this.MapPanel.TabIndex = 0;
             // 
             // loadMapBackgroundBtn
@@ -823,7 +827,7 @@
             // testTokenListItemToolStripMenuItem
             // 
             this.testTokenListItemToolStripMenuItem.Name = "testTokenListItemToolStripMenuItem";
-            this.testTokenListItemToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
+            this.testTokenListItemToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             this.testTokenListItemToolStripMenuItem.Text = "Test Token List Item";
             this.testTokenListItemToolStripMenuItem.Click += new System.EventHandler(this.testTokenListItemToolStripMenuItem_Click);
             // 
@@ -926,7 +930,6 @@
         private System.Windows.Forms.Button editLibTokenBtn;
         private System.Windows.Forms.Button placeTokenOnMapBtn;
         private System.Windows.Forms.ListBox tokenLibList;
-        private System.Windows.Forms.ListBox activeTokensList;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox activeTokEnemyFilterCheck;
         private System.Windows.Forms.CheckBox activeTokNonPlayerFilterCheck;
@@ -943,6 +946,7 @@
 		private System.Windows.Forms.Panel LibraryPanel;
 		private System.Windows.Forms.Panel MapPanel;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
+        private System.Windows.Forms.FlowLayoutPanel activeTokenFlowPanel;
     }
 }
 

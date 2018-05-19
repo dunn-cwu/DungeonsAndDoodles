@@ -157,7 +157,8 @@ namespace DungeonsAndDoodles
         protected PointF position;
         protected bool selected = false;
         protected float scale = 1.0f;
-        protected Image charImage= null;
+        protected Image charImage = null;
+        protected TokenListItemControl control = null;
 
         protected ViewStatsForm viewStatsForm;
 
@@ -167,9 +168,10 @@ namespace DungeonsAndDoodles
             this.mapCtrl = mapCtrl;
             this.tokenData = new TokenData(ref tokenData);
             this.position = mapPosition;
+            this.control = new TokenListItemControl(this);
         }
 
-        
+
 
         // Copy constructor
         public MapToken(MapToken other)
@@ -193,12 +195,32 @@ namespace DungeonsAndDoodles
             mapCtrl.Refresh();
         }
 
+        public TokenListItemControl Control
+        {
+            get
+            {
+                return control;
+
+            }
+        }
+
         public int CurrentHP
         {
             get { return tokenData.CurrentHP; }
             set
             {
                 tokenData.CurrentHP = value;
+                control.UpdateData();
+            }
+        }
+
+        public int MaxHP
+        {
+            get { return tokenData.MaxHP; }
+            set
+            {
+                tokenData.MaxHP = value;
+                control.UpdateData();
             }
         }
 

@@ -39,16 +39,16 @@
             this.HPPlus = new System.Windows.Forms.Button();
             this.HPMinus = new System.Windows.Forms.Button();
             this.TokenImageBox = new System.Windows.Forms.PictureBox();
+            this.acLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TokenImageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // TokenName
             // 
-            this.TokenName.AutoSize = true;
             this.TokenName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TokenName.Location = new System.Drawing.Point(3, 0);
             this.TokenName.Name = "TokenName";
-            this.TokenName.Size = new System.Drawing.Size(51, 20);
+            this.TokenName.Size = new System.Drawing.Size(242, 20);
             this.TokenName.TabIndex = 0;
             this.TokenName.Text = "label1";
             this.TokenName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,6 +114,7 @@
             this.HealthBox.Name = "HealthBox";
             this.HealthBox.Size = new System.Drawing.Size(135, 20);
             this.HealthBox.TabIndex = 8;
+            this.HealthBox.Click += new System.EventHandler(this.HealthBox_Click);
             this.HealthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HealthBox_KeyDown);
             // 
             // HPPlus
@@ -144,10 +145,20 @@
             this.TokenImageBox.TabIndex = 11;
             this.TokenImageBox.TabStop = false;
             // 
+            // acLabel
+            // 
+            this.acLabel.AutoSize = true;
+            this.acLabel.Location = new System.Drawing.Point(261, 6);
+            this.acLabel.Name = "acLabel";
+            this.acLabel.Size = new System.Drawing.Size(35, 13);
+            this.acLabel.TabIndex = 12;
+            this.acLabel.Text = "label1";
+            // 
             // TokenListItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.acLabel);
             this.Controls.Add(this.TokenImageBox);
             this.Controls.Add(this.HPMinus);
             this.Controls.Add(this.HPPlus);
@@ -162,6 +173,8 @@
             this.Name = "TokenListItemControl";
             this.Size = new System.Drawing.Size(306, 105);
             this.Load += new System.EventHandler(this.TokenListItemControl_Load);
+            this.Click += new System.EventHandler(this.TokenListItemControl_Click);
+            this.MouseLeave += new System.EventHandler(this.TokenListItemControl_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.TokenImageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Button HPPlus;
         private System.Windows.Forms.Button HPMinus;
         private System.Windows.Forms.PictureBox TokenImageBox;
+        private System.Windows.Forms.Label acLabel;
     }
 }

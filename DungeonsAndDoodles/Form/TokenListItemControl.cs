@@ -13,19 +13,122 @@ namespace DungeonsAndDoodles
     public partial class TokenListItemControl : UserControl
     {
         private MapToken token;
-        private TokenData data;
-        private Boolean editMode;
+
+        bool healthEditMode = false;
+
         public TokenListItemControl(MapToken token)
         {
-           
-
             InitializeComponent();
 
             this.token = token;
 
-            this.data = token.GetTokenData();
+            UpdateData();
+        }
 
-            TokenName.Text = data.Name + "     AC: " + data.ArmorClass;
+        private void TokenListItemControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HPPlus_Click(object sender, EventArgs e)
+        {
+
+            if (token.CurrentHP < token.MaxHP)
+            {
+                token.CurrentHP += 1;
+            }
+        }
+
+        private void HPMinus_Click(object sender, EventArgs e)
+        {
+
+            if (token.CurrentHP > 0)
+            {
+                token.CurrentHP -= 1;
+            }
+        }
+
+        private void HealthBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HealthBox_Click(object sender, EventArgs e)
+        {
+            if (!healthEditMode)
+            {
+                healthEditMode = true;
+
+                HealthBox.Text = token.CurrentHP.ToString();
+                HealthBox.SelectAll();
+            }
+        }
+
+        private void TokenListItemControl_MouseLeave(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void HealthBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                //exit edit mode
+
+                UpdateData();
+            }
+        }
+
+        private void updateHealthBox()
+        {
+            if (!healthEditMode) { return; }
+
+            HealthBox.DeselectAll();
+            HPMinus.Select();
+            healthEditMode = false;
+
+            try
+            {
+                if (Convert.ToInt32(HealthBox.Text) >= 0 || Convert.ToInt32(HealthBox.Text) <= token.MaxHP) { }
+
+                token.CurrentHP = Convert.ToInt32(HealthBox.Text);
+                HealthBox.Text = token.CurrentHP + " / " + token.MaxHP;
+
+                if (token.CurrentHP >= token.MaxHP / 3)
+                {
+                    HealthBox.BackColor = Color.Lime;
+                }
+                else if (token.CurrentHP >= token.MaxHP / 10)
+                {
+                    HealthBox.BackColor = Color.Orange;
+                }
+                else
+                {
+                    HealthBox.BackColor = Color.Red;
+                }
+            }
+
+
+            catch (Exception a)
+            {
+                HealthBox.Text = token.CurrentHP + " / " + token.MaxHP;
+            }
+        }
+
+        public void UpdateData()
+        {
+            TokenData data = token.GetTokenData();
+
+            TokenName.Text = data.Name;
+
+            acLabel.Text = "AC: " + data.ArmorClass;
 
             TokenStrength.Text = "STR: " + data.Strength;
 
@@ -54,120 +157,12 @@ namespace DungeonsAndDoodles
                 HealthBox.BackColor = Color.Red;
             }
 
-
+            updateHealthBox();
         }
 
-        private void TokenListItemControl_Load(object sender, EventArgs e)
+        private void TokenListItemControl_Click(object sender, EventArgs e)
         {
-
+            UpdateData();
         }
-
-
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HPPlus_Click(object sender, EventArgs e)
-        {
-
-            if (data.CurrentHP < data.MaxHP)
-            {
-                data.CurrentHP += 1;
-
-                HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-
-                if (data.CurrentHP >= data.MaxHP / 2)
-                {
-                    HealthBox.BackColor = Color.Lime;
-                }
-                else if (data.CurrentHP >= data.MaxHP / 10)
-                {
-                    HealthBox.BackColor = Color.Orange;
-                }
-                else
-                {
-                    HealthBox.BackColor = Color.Red;
-                }
-            }
-        }
-
-        private void HPMinus_Click(object sender, EventArgs e)
-        {
-
-            if (data.CurrentHP > 0)
-            {
-                data.CurrentHP -= 1;
-
-                HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-
-                if (data.CurrentHP >= data.MaxHP / 2)
-                {
-                    HealthBox.BackColor = Color.Lime;
-                }
-                else if (data.CurrentHP >= data.MaxHP / 10)
-                {
-                    HealthBox.BackColor = Color.Orange;
-                }
-                else
-                {
-                    HealthBox.BackColor = Color.Red;
-                }
-            }
-        }
-
-        private void HealthBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HealthBox_Click(object sender, EventArgs e)
-        {
-           //go to edit mode and edit box contents.
-
-
-            
-            
-        }
-
-        private void HealthBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                //exit edit mode
-
-                try
-                {
-                    if (Convert.ToInt32(HealthBox.Text) >= 0 || Convert.ToInt32(HealthBox.Text) <= data.MaxHP) { }
-
-                    data.CurrentHP = Convert.ToInt32(HealthBox.Text);
-                    HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-
-                    if (data.CurrentHP >= data.MaxHP / 3)
-                    {
-                        HealthBox.BackColor = Color.Lime;
-                    }
-                    else if (data.CurrentHP >= data.MaxHP / 10)
-                    {
-                        HealthBox.BackColor = Color.Orange;
-                    }
-                    else
-                    {
-                        HealthBox.BackColor = Color.Red;
-                    }
-                }
-
-
-                catch (Exception a)
-                {
-                    HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
-                }
-
-
-            }
-        }
-
-
     }
 }

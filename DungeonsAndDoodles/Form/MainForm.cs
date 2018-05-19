@@ -369,36 +369,44 @@ namespace DungeonsAndDoodles
 
         private void refreshActiveTokenList()
         {
-            MapToken selectedToken = null;
+            activeTokenFlowPanel.Controls.Clear();
 
-            if (tokenLibList.SelectedIndex >= 0)
+            foreach (MapToken token in gameState.ActiveTokens)
             {
-                selectedToken = (MapToken)activeTokensList.SelectedItem;
+                activeTokenFlowPanel.Controls.Add(token.Control);
             }
+            
 
-            activeTokensList.Items.Clear();
+            //MapToken selectedToken = null;
 
-            var enumerator = gameState.ActiveTokens.GetEnumerator();
+            //if (tokenLibList.SelectedIndex >= 0)
+            //{
+            //    selectedToken = (MapToken)activeTokensList.SelectedItem;
+            //}
 
-            while (enumerator.MoveNext())
-            {
-                MapToken token = enumerator.Current;
+            //activeTokensList.Items.Clear();
 
-                if (token.TokenType == TokenType.Player && activeTokPlayerFilterCheck.Checked)
-                {
-                    activeTokensList.Items.Add(token);
-                }
-                else if (token.TokenType == TokenType.Enemy && activeTokEnemyFilterCheck.Checked)
-                {
-                    activeTokensList.Items.Add(token);
-                }
-                else if (token.TokenType == TokenType.NPC && activeTokNonPlayerFilterCheck.Checked)
-                {
-                    activeTokensList.Items.Add(token);
-                }
-            }
+            //var enumerator = gameState.ActiveTokens.GetEnumerator();
 
-            activeTokensList.SelectedItem = selectedToken;
+            //while (enumerator.MoveNext())
+            //{
+            //    MapToken token = enumerator.Current;
+
+            //    if (token.TokenType == TokenType.Player && activeTokPlayerFilterCheck.Checked)
+            //    {
+            //        activeTokensList.Items.Add(token);
+            //    }
+            //    else if (token.TokenType == TokenType.Enemy && activeTokEnemyFilterCheck.Checked)
+            //    {
+            //        activeTokensList.Items.Add(token);
+            //    }
+            //    else if (token.TokenType == TokenType.NPC && activeTokNonPlayerFilterCheck.Checked)
+            //    {
+            //        activeTokensList.Items.Add(token);
+            //    }
+            //}
+
+            //activeTokensList.SelectedItem = selectedToken;
         }
 
         private void activeTokPlayerFilterCheck_CheckedChanged(object sender, EventArgs e)
@@ -418,57 +426,57 @@ namespace DungeonsAndDoodles
 
         private void actTokLocateBtn_Click(object sender, EventArgs e)
         {
-            int curSelectedIndex = activeTokensList.SelectedIndex;
+        //    int curSelectedIndex = activeTokensList.SelectedIndex;
 
-            // No token selected
-            if (curSelectedIndex < 0)
-            {
-                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+        //    // No token selected
+        //    if (curSelectedIndex < 0)
+        //    {
+        //        MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
 
-            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-            mapControl.ViewPosition = selectedToken.Position;
-        }
+        //    MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+        //    mapControl.ViewPosition = selectedToken.Position;
+        //}
 
-        private void actTokEditBtn_Click(object sender, EventArgs e)
-        {
-            int curSelectedIndex = activeTokensList.SelectedIndex;
+        //private void actTokEditBtn_Click(object sender, EventArgs e)
+        //{
+        //    int curSelectedIndex = activeTokensList.SelectedIndex;
 
-            // No token selected
-            if (curSelectedIndex < 0)
-            {
-                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+        //    // No token selected
+        //    if (curSelectedIndex < 0)
+        //    {
+        //        MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
 
-            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-            TokenData tokenData = selectedToken.GetTokenData();
+        //    MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+        //    TokenData tokenData = selectedToken.GetTokenData();
 
-            EditTokenForm charForm = new EditTokenForm(gameState);
-            charForm.SetTokenData(ref tokenData);
-            DialogResult result = charForm.ShowDialog(this);
+        //    EditTokenForm charForm = new EditTokenForm(gameState);
+        //    charForm.SetTokenData(ref tokenData);
+        //    DialogResult result = charForm.ShowDialog(this);
 
-            if (result == DialogResult.OK)
-            {
-                tokenData = charForm.GetTokenData();
-                selectedToken.SetTokenData(ref tokenData);
-            }
+        //    if (result == DialogResult.OK)
+        //    {
+        //        tokenData = charForm.GetTokenData();
+        //        selectedToken.SetTokenData(ref tokenData);
+        //    }
         }
 
         private void actTokRemoveBtn_Click(object sender, EventArgs e)
         {
-            int curSelectedIndex = activeTokensList.SelectedIndex;
+            //int curSelectedIndex = activeTokensList.SelectedIndex;
 
-            // No token selected
-            if (curSelectedIndex < 0)
-            {
-                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //// No token selected
+            //if (curSelectedIndex < 0)
+            //{
+            //    MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
 
-            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-            gameState.ActiveTokens.Remove(selectedToken);
+            //MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+            //gameState.ActiveTokens.Remove(selectedToken);
         }
 
 		private void label4_Click(object sender, EventArgs e)
