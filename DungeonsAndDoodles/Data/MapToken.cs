@@ -155,11 +155,12 @@ namespace DungeonsAndDoodles
         protected TokenData tokenData;
         protected TokenMouseState mouseState = TokenMouseState.Idle;
         protected PointF position;
+        protected bool imageLoadFailed = false;
         protected bool selected = false;
         protected float scale = 1.0f;
         protected Image charImage = null;
+        protected Image resizedCharImage = null;
         protected TokenListItemControl control = null;
-
         protected ViewStatsForm viewStatsForm;
 
 
@@ -317,13 +318,14 @@ namespace DungeonsAndDoodles
 
             bool loaded = charImage != null;
 
-            if(!loaded)
+            if(!loaded && !imageLoadFailed)
             {
                 loaded = loadTokenImage();
             }
 
             if (!loaded)
             {
+                imageLoadFailed = true;
                 DrawBasicToken(graphics, ref viewportRect, ref tokenRect);
             }
             else
@@ -336,7 +338,9 @@ namespace DungeonsAndDoodles
         {
             Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
 
-            graphics.DrawImage(charImage, pixelRect);
+            resizeTokenSprite(ref pixelRect);
+
+            graphics.DrawImage(resizedCharImage, pixelRect);
         }
 
         public void DrawBasicToken(Graphics graphics, ref RectangleF viewportRect, ref RectangleF tokenRect)
@@ -452,6 +456,14 @@ namespace DungeonsAndDoodles
                 charImage.Dispose();
                 charImage = null;
             }
+
+            if (resizedCharImage != null)
+            {
+                resizedCharImage.Dispose();
+                resizedCharImage = null;
+            }
+
+            imageLoadFailed = false;
         }
 
         public override string ToString()
@@ -469,6 +481,12 @@ namespace DungeonsAndDoodles
                     charImage = null;
                 }
 
+                if (resizedCharImage != null)
+                {
+                    resizedCharImage.Dispose();
+                    resizedCharImage = null;
+                }
+
                 charImage = Bitmap.FromFile(tokenData.PictureFileName);
             }
             catch(Exception e)
@@ -477,6 +495,24 @@ namespace DungeonsAndDoodles
             }
 
             return true;
+        }
+
+        // Resizes token sprite to match current zoom level.
+        // Speeds up drawing process
+        private void resizeTokenSprite(ref Rectangle pixelRect)
+        {
+            // Return if resize is not needed
+            if (resizedCharImage != null && resizedCharImage.Width == pixelRect.Width) { return; }
+
+            Image spriteResized = MapControl.ResizeImage(charImage, pixelRect.Width, pixelRect.Height);
+
+            if (resizedCharImage != null)
+            {
+                resizedCharImage.Dispose();
+                resizedCharImage = null;
+            }
+
+            resizedCharImage = spriteResized;
         }
     }
 
