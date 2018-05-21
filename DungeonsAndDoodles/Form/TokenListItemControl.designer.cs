@@ -142,6 +142,7 @@
             this.TokenImageBox.Location = new System.Drawing.Point(7, 23);
             this.TokenImageBox.Name = "TokenImageBox";
             this.TokenImageBox.Size = new System.Drawing.Size(75, 75);
+            this.TokenImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.TokenImageBox.TabIndex = 11;
             this.TokenImageBox.TabStop = false;
             // 

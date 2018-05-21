@@ -172,8 +172,6 @@ namespace DungeonsAndDoodles
             this.control = new TokenListItemControl(this);
         }
 
-
-
         // Copy constructor
         public MapToken(MapToken other)
         {
@@ -204,6 +202,11 @@ namespace DungeonsAndDoodles
                 return control;
 
             }
+        }
+
+        public Image Image
+        {
+            get { return charImage; }
         }
 
         public int CurrentHP
@@ -465,6 +468,8 @@ namespace DungeonsAndDoodles
             }
 
             imageLoadFailed = false;
+
+            control.UpdateData();
         }
 
         public override string ToString()
@@ -489,6 +494,8 @@ namespace DungeonsAndDoodles
                 }
 
                 charImage = Bitmap.FromFile(tokenData.PictureFileName);
+
+                control.UpdateData();
             }
             catch(Exception e)
             {

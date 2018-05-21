@@ -158,6 +158,17 @@ namespace DungeonsAndDoodles
             }
 
             updateHealthBox();
+
+            if (token.Image != null)
+            {
+                this.TokenImageBox.Image = token.Image;
+            }
+            else
+            {
+                this.TokenImageBox.Image = new Bitmap(1, 1);
+            }
+
+            this.Refresh();
         }
 
         private void TokenListItemControl_Click(object sender, EventArgs e)
