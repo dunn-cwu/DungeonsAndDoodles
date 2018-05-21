@@ -15,6 +15,9 @@ namespace DungeonsAndDoodles
 {
     public partial class MainForm : Form
     {
+        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_ONE = Color.LightGray;
+        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_TWO = Color.White;
+
         private MapControl mapControl;
         private GameState gameState;
         private int savedSplitterPos;
@@ -92,6 +95,9 @@ namespace DungeonsAndDoodles
 
         private void loadMapBackgroundBtn_Click(object sender, EventArgs e)
         {
+            string initialDir = AppDomain.CurrentDomain.BaseDirectory + "Resource\\Maps";
+            openMapImageDialog.InitialDirectory = initialDir;
+
             if (openMapImageDialog.ShowDialog() == DialogResult.OK)
             {
                 gameState.MapImageFile = openMapImageDialog.FileName;
@@ -371,42 +377,42 @@ namespace DungeonsAndDoodles
         {
             activeTokenFlowPanel.Controls.Clear();
 
+            int counter = 0;
+
             foreach (MapToken token in gameState.ActiveTokens)
             {
-                activeTokenFlowPanel.Controls.Add(token.Control);
+                bool add = false;
+
+                if (token.TokenType == TokenType.Player && activeTokPlayerFilterCheck.Checked)
+                {
+                    add = true;
+                }
+                else if (token.TokenType == TokenType.Enemy && activeTokEnemyFilterCheck.Checked)
+                {
+                    add = true;
+                }
+                else if (token.TokenType == TokenType.NPC && activeTokNonPlayerFilterCheck.Checked)
+                {
+                    add = true;
+                }
+
+                if (add)
+                {
+                    if (counter % 2 == 1)
+                    {
+                        token.Control.BackColor = ACTIVE_TOKEN_LIST_COLOR_ONE;
+                    }
+                    else
+                    {
+                        token.Control.BackColor = ACTIVE_TOKEN_LIST_COLOR_TWO;
+                    }
+
+                    activeTokenFlowPanel.Controls.Add(token.Control);
+
+
+                    counter++;
+                }
             }
-            
-
-            //MapToken selectedToken = null;
-
-            //if (tokenLibList.SelectedIndex >= 0)
-            //{
-            //    selectedToken = (MapToken)activeTokensList.SelectedItem;
-            //}
-
-            //activeTokensList.Items.Clear();
-
-            //var enumerator = gameState.ActiveTokens.GetEnumerator();
-
-            //while (enumerator.MoveNext())
-            //{
-            //    MapToken token = enumerator.Current;
-
-            //    if (token.TokenType == TokenType.Player && activeTokPlayerFilterCheck.Checked)
-            //    {
-            //        activeTokensList.Items.Add(token);
-            //    }
-            //    else if (token.TokenType == TokenType.Enemy && activeTokEnemyFilterCheck.Checked)
-            //    {
-            //        activeTokensList.Items.Add(token);
-            //    }
-            //    else if (token.TokenType == TokenType.NPC && activeTokNonPlayerFilterCheck.Checked)
-            //    {
-            //        activeTokensList.Items.Add(token);
-            //    }
-            //}
-
-            //activeTokensList.SelectedItem = selectedToken;
         }
 
         private void activeTokPlayerFilterCheck_CheckedChanged(object sender, EventArgs e)

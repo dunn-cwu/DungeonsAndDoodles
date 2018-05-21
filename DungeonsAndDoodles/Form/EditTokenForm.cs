@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,23 @@ namespace DungeonsAndDoodles
 {
     public partial class EditTokenForm : Form
     {
+        public static readonly string TOKENS_BASE_DIR = "Resource\\Tokens\\";
+        public static readonly string PLAYER_TOKENS_FOLDER = "Players\\";
+        public static readonly string ENEMIES_TOKENS_FOLDER = "Baddies\\";
+        public static readonly string NPC_TOKENS_FOLDER = "NPC\\";
+        public static readonly string[] VALID_FILE_EXTENSIONS = new string[] { ".bmp", ".jpg", ".jpeg", ".png", ".tif", ".tiff"};
+
         private GameState gameState = null;
         private bool editingExistingToken = false;
         private string image = "";
-
+        private bool usingDefaultImage = false;
 
         public EditTokenForm(GameState gameState)
         {
             InitializeComponent();
 
             this.gameState = gameState;
+            setDefaultImage();
         }
 
         // Updates fields on form based on existing token data
@@ -62,6 +70,7 @@ namespace DungeonsAndDoodles
             NPCtype_rad.Enabled = false;
 
             image = data.PictureFileName;
+            usingDefaultImage = false;
 
             loadImage();
 
@@ -119,7 +128,9 @@ namespace DungeonsAndDoodles
 
         private void charPic_DoubleClick(object sender, EventArgs e)
         {
-            if(getImageBrowser.ShowDialog(this) == DialogResult.OK)
+            getImageBrowser.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory + TOKENS_BASE_DIR;
+
+            if (getImageBrowser.ShowDialog(this) == DialogResult.OK)
             {
                 image = getImageBrowser.FileName;
                 loadImage();
@@ -137,6 +148,82 @@ namespace DungeonsAndDoodles
             if (image == "") { return; }
 
             charPic.Image = Bitmap.FromFile(image);
+        }
+
+        private void setDefaultImage()
+        {
+            string imgDir = TOKENS_BASE_DIR;
+
+            if (playerType_rad.Checked)
+            {
+                imgDir += PLAYER_TOKENS_FOLDER;
+            }
+            else if (enemyType_rad.Checked)
+            {
+                imgDir += ENEMIES_TOKENS_FOLDER;
+            }
+            else
+            {
+                imgDir += NPC_TOKENS_FOLDER;
+            }
+
+            try
+            {
+                string[] files = Directory.GetFiles(imgDir);
+                List<string> imgFiles = new List<string>();
+              
+
+                foreach (string file in files)
+                {
+                    if (File.Exists(file) && VALID_FILE_EXTENSIONS.Any(file.Contains))
+                    {
+                        imgFiles.Add(file);
+                    }
+                }
+
+                if (imgFiles.Count > 0)
+                {
+                    Random rand = new Random();
+
+                    image = imgFiles[rand.Next(0, imgFiles.Count)];
+                    usingDefaultImage = true;
+                }
+                else
+                {
+                    usingDefaultImage = true;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                usingDefaultImage = false;
+            }
+
+            loadImage();
+        }
+
+        private void playerType_rad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (usingDefaultImage)
+            {
+                setDefaultImage();
+            }
+        }
+
+        private void enemyType_rad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (usingDefaultImage)
+            {
+                setDefaultImage();
+            }
+        }
+
+        private void NPCtype_rad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (usingDefaultImage)
+            {
+                setDefaultImage();
+            }
         }
     }
 }

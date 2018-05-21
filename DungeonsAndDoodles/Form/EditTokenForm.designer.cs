@@ -81,6 +81,7 @@
             this.playerType_rad.TabStop = true;
             this.playerType_rad.Text = "Player";
             this.playerType_rad.UseVisualStyleBackColor = true;
+            this.playerType_rad.CheckedChanged += new System.EventHandler(this.playerType_rad_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -104,6 +105,7 @@
             this.enemyType_rad.TabStop = true;
             this.enemyType_rad.Text = "Enemy";
             this.enemyType_rad.UseVisualStyleBackColor = true;
+            this.enemyType_rad.CheckedChanged += new System.EventHandler(this.enemyType_rad_CheckedChanged);
             // 
             // NPCtype_rad
             // 
@@ -115,6 +117,7 @@
             this.NPCtype_rad.TabStop = true;
             this.NPCtype_rad.Text = "Non-player";
             this.NPCtype_rad.UseVisualStyleBackColor = true;
+            this.NPCtype_rad.CheckedChanged += new System.EventHandler(this.NPCtype_rad_CheckedChanged);
             // 
             // charPic
             // 
