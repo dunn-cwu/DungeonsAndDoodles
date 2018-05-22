@@ -188,6 +188,11 @@ namespace DungeonsAndDoodles
             return this.tokenData;
         }
 
+        public GameState GameState
+        {
+            get { return mapCtrl.GameState; } 
+        }
+
         public void SetTokenData(ref TokenData otherData)
         {
             this.tokenData = new TokenData(ref otherData);

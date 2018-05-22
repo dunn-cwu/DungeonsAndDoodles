@@ -400,11 +400,11 @@ namespace DungeonsAndDoodles
                 {
                     if (counter % 2 == 1)
                     {
-                        token.Control.BackColor = ACTIVE_TOKEN_LIST_COLOR_ONE;
+                        token.Control.DefaultBackColor = ACTIVE_TOKEN_LIST_COLOR_ONE;
                     }
                     else
                     {
-                        token.Control.BackColor = ACTIVE_TOKEN_LIST_COLOR_TWO;
+                        token.Control.DefaultBackColor = ACTIVE_TOKEN_LIST_COLOR_TWO;
                     }
 
                     activeTokenFlowPanel.Controls.Add(token.Control);
@@ -432,57 +432,67 @@ namespace DungeonsAndDoodles
 
         private void actTokLocateBtn_Click(object sender, EventArgs e)
         {
-        //    int curSelectedIndex = activeTokensList.SelectedIndex;
+            foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
+            {
+                if (ctrl.Selected)
+                {
+                    MapToken mapToken = ctrl.MapToken;
+                    mapControl.ViewPosition = mapToken.Position;
+                    return;
+                }
+            }
 
-        //    // No token selected
-        //    if (curSelectedIndex < 0)
-        //    {
-        //        MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        return;
-        //    }
+            MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-        //    MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-        //    mapControl.ViewPosition = selectedToken.Position;
-        //}
+        private void actTokEditBtn_Click(object sender, EventArgs e)
+        {
+            foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
+            {
+                if (ctrl.Selected)
+                {
+                    MapToken mapToken = ctrl.MapToken;
+                    TokenData tokenData = mapToken.GetTokenData();
 
-        //private void actTokEditBtn_Click(object sender, EventArgs e)
-        //{
-        //    int curSelectedIndex = activeTokensList.SelectedIndex;
+                    EditTokenForm charForm = new EditTokenForm(gameState);
+                    charForm.SetTokenData(ref tokenData);
+                    DialogResult result = charForm.ShowDialog(this);
 
-        //    // No token selected
-        //    if (curSelectedIndex < 0)
-        //    {
-        //        MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        return;
-        //    }
+                    if (result == DialogResult.OK)
+                    {
+                        tokenData = charForm.GetTokenData();
+                        mapToken.SetTokenData(ref tokenData);
+                    }
 
-        //    MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-        //    TokenData tokenData = selectedToken.GetTokenData();
+                    return;
+                }
+            }
 
-        //    EditTokenForm charForm = new EditTokenForm(gameState);
-        //    charForm.SetTokenData(ref tokenData);
-        //    DialogResult result = charForm.ShowDialog(this);
-
-        //    if (result == DialogResult.OK)
-        //    {
-        //        tokenData = charForm.GetTokenData();
-        //        selectedToken.SetTokenData(ref tokenData);
-        //    }
+            MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void actTokRemoveBtn_Click(object sender, EventArgs e)
         {
-            //int curSelectedIndex = activeTokensList.SelectedIndex;
+            List<TokenListItemControl> selectedCtrls = new List<TokenListItemControl>();
 
-            //// No token selected
-            //if (curSelectedIndex < 0)
-            //{
-            //    MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
+            foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
+            {
+                if (ctrl.Selected)
+                {
+                    selectedCtrls.Add(ctrl);
+                }
+            }
 
-            //MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
-            //gameState.ActiveTokens.Remove(selectedToken);
+            if (selectedCtrls.Count == 0)
+            {
+                MessageBox.Show("No tokens selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            foreach (TokenListItemControl ctrl in selectedCtrls)
+            {
+                gameState.ActiveTokens.Remove(ctrl.MapToken);
+            }
         }
 
 		private void label4_Click(object sender, EventArgs e)
@@ -528,5 +538,21 @@ namespace DungeonsAndDoodles
 		{
 
 		}
-	}
+
+        private void selectAllActiveTokensBtn_Click(object sender, EventArgs e)
+        {
+            foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
+            {
+                ctrl.Selected = true;
+            }
+        }
+
+        private void deselectAllActiveTokensBtn_Click(object sender, EventArgs e)
+        {
+            foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
+            {
+                ctrl.Selected = false;
+            }
+        }
+    }
 }

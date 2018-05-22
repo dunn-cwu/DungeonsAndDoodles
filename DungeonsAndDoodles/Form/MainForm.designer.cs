@@ -90,6 +90,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testTokenListItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openMapImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.selectAllActiveTokensBtn = new System.Windows.Forms.Button();
+            this.deselectAllActiveTokensBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
@@ -191,6 +193,8 @@
             // ActiveTokensPanel
             // 
             this.ActiveTokensPanel.AutoScroll = true;
+            this.ActiveTokensPanel.Controls.Add(this.deselectAllActiveTokensBtn);
+            this.ActiveTokensPanel.Controls.Add(this.selectAllActiveTokensBtn);
             this.ActiveTokensPanel.Controls.Add(this.activeTokenFlowPanel);
             this.ActiveTokensPanel.Controls.Add(this.actTokRemoveBtn);
             this.ActiveTokensPanel.Controls.Add(this.actTokEditBtn);
@@ -221,9 +225,9 @@
             // actTokRemoveBtn
             // 
             this.actTokRemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.actTokRemoveBtn.Location = new System.Drawing.Point(170, 356);
+            this.actTokRemoveBtn.Location = new System.Drawing.Point(223, 356);
             this.actTokRemoveBtn.Name = "actTokRemoveBtn";
-            this.actTokRemoveBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokRemoveBtn.Size = new System.Drawing.Size(100, 23);
             this.actTokRemoveBtn.TabIndex = 6;
             this.actTokRemoveBtn.Text = "Remove";
             this.actTokRemoveBtn.UseVisualStyleBackColor = true;
@@ -232,12 +236,13 @@
             // actTokEditBtn
             // 
             this.actTokEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.actTokEditBtn.Location = new System.Drawing.Point(98, 356);
+            this.actTokEditBtn.Location = new System.Drawing.Point(119, 356);
             this.actTokEditBtn.Name = "actTokEditBtn";
-            this.actTokEditBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokEditBtn.Size = new System.Drawing.Size(100, 23);
             this.actTokEditBtn.TabIndex = 5;
             this.actTokEditBtn.Text = "Edit ...";
             this.actTokEditBtn.UseVisualStyleBackColor = true;
+            this.actTokEditBtn.Click += new System.EventHandler(this.actTokEditBtn_Click);
             // 
             // snapTokensToGridCheckbox
             // 
@@ -253,9 +258,9 @@
             // actTokLocateBtn
             // 
             this.actTokLocateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.actTokLocateBtn.Location = new System.Drawing.Point(29, 356);
+            this.actTokLocateBtn.Location = new System.Drawing.Point(13, 356);
             this.actTokLocateBtn.Name = "actTokLocateBtn";
-            this.actTokLocateBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokLocateBtn.Size = new System.Drawing.Size(100, 23);
             this.actTokLocateBtn.TabIndex = 4;
             this.actTokLocateBtn.Text = "Locate";
             this.actTokLocateBtn.UseVisualStyleBackColor = true;
@@ -840,6 +845,28 @@
             this.openMapImageDialog.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
             this.openMapImageDialog.RestoreDirectory = true;
             // 
+            // selectAllActiveTokensBtn
+            // 
+            this.selectAllActiveTokensBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.selectAllActiveTokensBtn.Location = new System.Drawing.Point(11, 382);
+            this.selectAllActiveTokensBtn.Name = "selectAllActiveTokensBtn";
+            this.selectAllActiveTokensBtn.Size = new System.Drawing.Size(150, 23);
+            this.selectAllActiveTokensBtn.TabIndex = 8;
+            this.selectAllActiveTokensBtn.Text = "Select All";
+            this.selectAllActiveTokensBtn.UseVisualStyleBackColor = true;
+            this.selectAllActiveTokensBtn.Click += new System.EventHandler(this.selectAllActiveTokensBtn_Click);
+            // 
+            // deselectAllActiveTokensBtn
+            // 
+            this.deselectAllActiveTokensBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deselectAllActiveTokensBtn.Location = new System.Drawing.Point(173, 382);
+            this.deselectAllActiveTokensBtn.Name = "deselectAllActiveTokensBtn";
+            this.deselectAllActiveTokensBtn.Size = new System.Drawing.Size(150, 23);
+            this.deselectAllActiveTokensBtn.TabIndex = 9;
+            this.deselectAllActiveTokensBtn.Text = "Deselect All";
+            this.deselectAllActiveTokensBtn.UseVisualStyleBackColor = true;
+            this.deselectAllActiveTokensBtn.Click += new System.EventHandler(this.deselectAllActiveTokensBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -951,6 +978,8 @@
 		private System.Windows.Forms.Panel MapPanel;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.FlowLayoutPanel activeTokenFlowPanel;
+        private System.Windows.Forms.Button deselectAllActiveTokensBtn;
+        private System.Windows.Forms.Button selectAllActiveTokensBtn;
     }
 }
 

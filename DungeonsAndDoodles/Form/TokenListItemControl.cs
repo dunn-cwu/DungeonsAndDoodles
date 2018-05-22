@@ -12,9 +12,13 @@ namespace DungeonsAndDoodles
 {
     public partial class TokenListItemControl : UserControl
     {
-        private MapToken token;
+        private static readonly Color SELECTED_COLOR = Color.LightGreen;
 
-        bool healthEditMode = false;
+        private MapToken token;
+        private bool selected = false;
+        private bool healthEditMode = false;
+
+        public new Color DefaultBackColor = Color.White;
 
         public TokenListItemControl(MapToken token)
         {
@@ -25,16 +29,39 @@ namespace DungeonsAndDoodles
             UpdateData();
         }
 
+        public bool Selected
+        {
+            get { return selected; }
+            set
+            {
+                selected = value;
+                Refresh();
+            }
+        }
+
+        public MapToken MapToken
+        {
+            get { return token; }
+        }
+
         private void TokenListItemControl_Load(object sender, EventArgs e)
         {
 
         }
 
-
-
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            if (selected)
+                this.BackColor = SELECTED_COLOR;
+            else
+                this.BackColor = DefaultBackColor;
+
+            base.OnPaintBackground(e);
         }
 
         private void HPPlus_Click(object sender, EventArgs e)
@@ -80,8 +107,6 @@ namespace DungeonsAndDoodles
         {
             if(e.KeyCode == Keys.Enter)
             {
-                //exit edit mode
-
                 UpdateData();
             }
         }
@@ -174,6 +199,26 @@ namespace DungeonsAndDoodles
         private void TokenListItemControl_Click(object sender, EventArgs e)
         {
             UpdateData();
+        }
+
+        private void TokenImageBox_Click(object sender, EventArgs e)
+        {
+            Selected = !Selected;
+        }
+
+        private void TokenImageBox_DoubleClick(object sender, EventArgs e)
+        {
+            TokenData tokenData = token.GetTokenData();
+
+            EditTokenForm charForm = new EditTokenForm(token.GameState);
+            charForm.SetTokenData(ref tokenData);
+            DialogResult result = charForm.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                tokenData = charForm.GetTokenData();
+                token.SetTokenData(ref tokenData);
+            }
         }
     }
 }

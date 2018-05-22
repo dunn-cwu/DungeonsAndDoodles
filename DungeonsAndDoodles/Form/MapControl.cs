@@ -102,6 +102,11 @@ namespace DungeonsAndDoodles
             get { return mapImage != null; }
         }
 
+        public GameState GameState
+        {
+            get { return gameState; }
+        }
+
         // Loads and updates the background image based on the file path
         // in gameState.MapImageFile
         public bool UpdateBackground()

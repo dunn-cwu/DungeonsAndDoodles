@@ -145,6 +145,8 @@
             this.TokenImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.TokenImageBox.TabIndex = 11;
             this.TokenImageBox.TabStop = false;
+            this.TokenImageBox.Click += new System.EventHandler(this.TokenImageBox_Click);
+            this.TokenImageBox.DoubleClick += new System.EventHandler(this.TokenImageBox_DoubleClick);
             // 
             // acLabel
             // 
