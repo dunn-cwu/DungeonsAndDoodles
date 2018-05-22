@@ -347,39 +347,45 @@
             // 
             // ExportTokenButton
             // 
-            this.ExportTokenButton.Location = new System.Drawing.Point(114, 374);
+            this.ExportTokenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExportTokenButton.Location = new System.Drawing.Point(170, 374);
             this.ExportTokenButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ExportTokenButton.Name = "ExportTokenButton";
-            this.ExportTokenButton.Size = new System.Drawing.Size(97, 23);
+            this.ExportTokenButton.Size = new System.Drawing.Size(150, 23);
             this.ExportTokenButton.TabIndex = 10;
             this.ExportTokenButton.Text = "Export Token";
             this.ExportTokenButton.UseVisualStyleBackColor = true;
             // 
             // tokenLibList
             // 
+            this.tokenLibList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tokenLibList.FormattingEnabled = true;
             this.tokenLibList.Location = new System.Drawing.Point(7, 62);
             this.tokenLibList.Name = "tokenLibList";
-            this.tokenLibList.Size = new System.Drawing.Size(204, 277);
+            this.tokenLibList.Size = new System.Drawing.Size(318, 277);
             this.tokenLibList.TabIndex = 2;
             this.tokenLibList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tokenLibList_KeyDown);
             this.tokenLibList.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tokenLibList_PreviewKeyDown);
             // 
             // TokenImportButton
             // 
+            this.TokenImportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TokenImportButton.Location = new System.Drawing.Point(7, 374);
             this.TokenImportButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TokenImportButton.Name = "TokenImportButton";
-            this.TokenImportButton.Size = new System.Drawing.Size(92, 23);
+            this.TokenImportButton.Size = new System.Drawing.Size(150, 23);
             this.TokenImportButton.TabIndex = 9;
             this.TokenImportButton.Text = "Import Token";
             this.TokenImportButton.UseVisualStyleBackColor = true;
             // 
             // newLibTokenBtn
             // 
-            this.newLibTokenBtn.Location = new System.Drawing.Point(147, 346);
+            this.newLibTokenBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.newLibTokenBtn.Location = new System.Drawing.Point(220, 345);
             this.newLibTokenBtn.Name = "newLibTokenBtn";
-            this.newLibTokenBtn.Size = new System.Drawing.Size(64, 23);
+            this.newLibTokenBtn.Size = new System.Drawing.Size(100, 23);
             this.newLibTokenBtn.TabIndex = 0;
             this.newLibTokenBtn.Text = "New ...";
             this.newLibTokenBtn.UseVisualStyleBackColor = true;
@@ -387,9 +393,10 @@
             // 
             // editLibTokenBtn
             // 
-            this.editLibTokenBtn.Location = new System.Drawing.Point(77, 346);
+            this.editLibTokenBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.editLibTokenBtn.Location = new System.Drawing.Point(113, 345);
             this.editLibTokenBtn.Name = "editLibTokenBtn";
-            this.editLibTokenBtn.Size = new System.Drawing.Size(64, 23);
+            this.editLibTokenBtn.Size = new System.Drawing.Size(100, 23);
             this.editLibTokenBtn.TabIndex = 4;
             this.editLibTokenBtn.Text = "Edit ...";
             this.editLibTokenBtn.UseVisualStyleBackColor = true;
@@ -448,9 +455,10 @@
             // 
             // placeTokenOnMapBtn
             // 
+            this.placeTokenOnMapBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.placeTokenOnMapBtn.Location = new System.Drawing.Point(7, 346);
             this.placeTokenOnMapBtn.Name = "placeTokenOnMapBtn";
-            this.placeTokenOnMapBtn.Size = new System.Drawing.Size(64, 23);
+            this.placeTokenOnMapBtn.Size = new System.Drawing.Size(100, 23);
             this.placeTokenOnMapBtn.TabIndex = 3;
             this.placeTokenOnMapBtn.Text = "<- Place";
             this.placeTokenOnMapBtn.UseVisualStyleBackColor = true;
@@ -482,9 +490,11 @@
             // 
             // loadMapBackgroundBtn
             // 
+            this.loadMapBackgroundBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.loadMapBackgroundBtn.Location = new System.Drawing.Point(6, 11);
             this.loadMapBackgroundBtn.Name = "loadMapBackgroundBtn";
-            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(195, 26);
+            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(303, 26);
             this.loadMapBackgroundBtn.TabIndex = 0;
             this.loadMapBackgroundBtn.Text = "Load Map Background";
             this.loadMapBackgroundBtn.UseVisualStyleBackColor = true;
@@ -492,6 +502,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.ToggleLineColorButton);
             this.groupBox1.Controls.Add(this.shiftGridRightBtn);
             this.groupBox1.Controls.Add(this.shiftGridLeftBtn);
@@ -506,7 +519,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 141);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 323);
+            this.groupBox1.Size = new System.Drawing.Size(303, 323);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -524,7 +537,7 @@
             // 
             // shiftGridRightBtn
             // 
-            this.shiftGridRightBtn.Location = new System.Drawing.Point(118, 52);
+            this.shiftGridRightBtn.Location = new System.Drawing.Point(154, 55);
             this.shiftGridRightBtn.Name = "shiftGridRightBtn";
             this.shiftGridRightBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridRightBtn.TabIndex = 19;
@@ -535,7 +548,7 @@
             // 
             // shiftGridLeftBtn
             // 
-            this.shiftGridLeftBtn.Location = new System.Drawing.Point(46, 52);
+            this.shiftGridLeftBtn.Location = new System.Drawing.Point(82, 55);
             this.shiftGridLeftBtn.Name = "shiftGridLeftBtn";
             this.shiftGridLeftBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridLeftBtn.TabIndex = 15;
@@ -546,7 +559,7 @@
             // 
             // shiftGridDownBtn
             // 
-            this.shiftGridDownBtn.Location = new System.Drawing.Point(82, 88);
+            this.shiftGridDownBtn.Location = new System.Drawing.Point(118, 91);
             this.shiftGridDownBtn.Name = "shiftGridDownBtn";
             this.shiftGridDownBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridDownBtn.TabIndex = 17;
@@ -557,7 +570,7 @@
             // 
             // shiftGridUpBtn
             // 
-            this.shiftGridUpBtn.Location = new System.Drawing.Point(82, 16);
+            this.shiftGridUpBtn.Location = new System.Drawing.Point(118, 19);
             this.shiftGridUpBtn.Name = "shiftGridUpBtn";
             this.shiftGridUpBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridUpBtn.TabIndex = 16;
@@ -568,7 +581,7 @@
             // 
             // resetGridPosBtn
             // 
-            this.resetGridPosBtn.Location = new System.Drawing.Point(82, 52);
+            this.resetGridPosBtn.Location = new System.Drawing.Point(118, 55);
             this.resetGridPosBtn.Name = "resetGridPosBtn";
             this.resetGridPosBtn.Size = new System.Drawing.Size(30, 30);
             this.resetGridPosBtn.TabIndex = 15;
@@ -584,7 +597,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(9, 242);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(198, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(288, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -608,7 +621,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(9, 188);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(198, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(288, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -630,7 +643,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(198, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(288, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -646,7 +659,9 @@
             // 
             // viewGroupBox
             // 
-            this.viewGroupBox.AutoSize = true;
+            this.viewGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.viewGroupBox.Controls.Add(this.resetViewBtn);
             this.viewGroupBox.Controls.Add(this.centerViewBtn);
             this.viewGroupBox.Controls.Add(this.zoomInBtn);
@@ -654,7 +669,7 @@
             this.viewGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewGroupBox.Location = new System.Drawing.Point(6, 45);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(221, 92);
+            this.viewGroupBox.Size = new System.Drawing.Size(303, 92);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -662,9 +677,10 @@
             // 
             // resetViewBtn
             // 
-            this.resetViewBtn.Location = new System.Drawing.Point(110, 48);
+            this.resetViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetViewBtn.Location = new System.Drawing.Point(177, 48);
             this.resetViewBtn.Name = "resetViewBtn";
-            this.resetViewBtn.Size = new System.Drawing.Size(85, 23);
+            this.resetViewBtn.Size = new System.Drawing.Size(120, 23);
             this.resetViewBtn.TabIndex = 4;
             this.resetViewBtn.Text = "Reset";
             this.resetViewBtn.UseVisualStyleBackColor = true;
@@ -672,9 +688,10 @@
             // 
             // centerViewBtn
             // 
-            this.centerViewBtn.Location = new System.Drawing.Point(110, 19);
+            this.centerViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.centerViewBtn.Location = new System.Drawing.Point(177, 19);
             this.centerViewBtn.Name = "centerViewBtn";
-            this.centerViewBtn.Size = new System.Drawing.Size(85, 23);
+            this.centerViewBtn.Size = new System.Drawing.Size(120, 23);
             this.centerViewBtn.TabIndex = 3;
             this.centerViewBtn.Text = "Center";
             this.centerViewBtn.UseVisualStyleBackColor = true;
@@ -684,7 +701,7 @@
             // 
             this.zoomInBtn.Location = new System.Drawing.Point(6, 19);
             this.zoomInBtn.Name = "zoomInBtn";
-            this.zoomInBtn.Size = new System.Drawing.Size(85, 23);
+            this.zoomInBtn.Size = new System.Drawing.Size(120, 23);
             this.zoomInBtn.TabIndex = 1;
             this.zoomInBtn.Text = "Zoom In";
             this.zoomInBtn.UseVisualStyleBackColor = true;
@@ -694,7 +711,7 @@
             // 
             this.zoomOutBtn.Location = new System.Drawing.Point(6, 48);
             this.zoomOutBtn.Name = "zoomOutBtn";
-            this.zoomOutBtn.Size = new System.Drawing.Size(85, 23);
+            this.zoomOutBtn.Size = new System.Drawing.Size(120, 23);
             this.zoomOutBtn.TabIndex = 2;
             this.zoomOutBtn.Text = "Zoom Out";
             this.zoomOutBtn.UseVisualStyleBackColor = true;
@@ -899,7 +916,6 @@
             this.groupBox2.PerformLayout();
             this.mapTabPage.ResumeLayout(false);
             this.MapPanel.ResumeLayout(false);
-            this.MapPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridScaleSlider)).EndInit();
