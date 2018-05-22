@@ -134,6 +134,7 @@ namespace DungeonsAndDoodles
             {
                 image = getImageBrowser.FileName;
                 loadImage();
+                usingDefaultImage = false;
             }
         }
 
