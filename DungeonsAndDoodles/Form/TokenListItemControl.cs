@@ -12,7 +12,7 @@ namespace DungeonsAndDoodles
 {
     public partial class TokenListItemControl : UserControl
     {
-        private static readonly Color SELECTED_COLOR = Color.LightGreen;
+        private static readonly Color SELECTED_COLOR = Color.FromArgb(255,255, 182, 48);
 
         private MapToken token;
         private bool selected = false;
@@ -107,6 +107,24 @@ namespace DungeonsAndDoodles
         {
             if(e.KeyCode == Keys.Enter)
             {
+                try
+                {
+
+                    int temp = Convert.ToInt32(HealthBox.Text);
+
+                    TokenData data = token.GetTokenData();
+
+                    if (temp >= 0 && temp <= data.MaxHP)
+                    {
+                        //UPDATE
+
+                        token.CurrentHP = temp;
+                    }
+                }
+                catch (Exception E)
+                {
+                }
+
                 UpdateData();
             }
         }

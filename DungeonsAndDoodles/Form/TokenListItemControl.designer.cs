@@ -51,7 +51,6 @@
             this.TokenName.Size = new System.Drawing.Size(242, 20);
             this.TokenName.TabIndex = 0;
             this.TokenName.Text = "label1";
-            this.TokenName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TokenStrength
             // 

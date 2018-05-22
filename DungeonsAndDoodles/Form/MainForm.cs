@@ -15,7 +15,7 @@ namespace DungeonsAndDoodles
 {
     public partial class MainForm : Form
     {
-        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_ONE = Color.LightGray;
+        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_ONE = Color.PeachPuff;
         private static readonly Color ACTIVE_TOKEN_LIST_COLOR_TWO = Color.White;
 
         private MapControl mapControl;
