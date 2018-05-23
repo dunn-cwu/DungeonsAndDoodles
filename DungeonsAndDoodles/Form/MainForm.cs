@@ -618,5 +618,75 @@ namespace DungeonsAndDoodles
                 }
             }
         }
+
+        private void ExportTokenButton_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = tokenLibList.SelectedIndex;
+
+            // No token selected
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            TokenData selectedToken = gameState.TokenLibrary[(string)tokenLibList.SelectedItem];
+
+            exportTokenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            if (exportTokenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    selectedToken.SaveToFile(exportTokenFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error exporting token: " + ex.Message, "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void TokenImportButton_Click(object sender, EventArgs e)
+        {
+            importTokenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            if (importTokenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string[] filePaths = importTokenFileDialog.FileNames;
+
+                foreach (string filePath in filePaths)
+                {
+                    try
+                    {
+                        TokenData loadedData = TokenData.LoadFromFile(filePath);
+                        string localPath = AppDomain.CurrentDomain.BaseDirectory + TokenData.TOKEN_LIBRARY_FOLDER + loadedData.Name + ".token";
+
+                        if (File.Exists(localPath))
+                        {
+                            if (MessageBox.Show("A token named " + loadedData.Name + " already exists in the current library. Overwrite?", "Overwrite existing token?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            {
+                                continue;
+                            }
+                        }
+
+                        File.Copy(filePath, localPath, true);
+
+                        if (gameState.TokenLibrary.Contains(loadedData.Name))
+                        {
+                            gameState.TokenLibrary[loadedData.Name] = loadedData;
+                        }
+                        else
+                        {
+                            gameState.TokenLibrary.Add(ref loadedData);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error loading token file: " + Path.GetFileName(filePath) + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
