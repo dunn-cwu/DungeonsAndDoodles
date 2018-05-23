@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,8 @@ namespace DungeonsAndDoodles
             gameState.ActiveTokens.MapTokenAddedRemovedEvent += ActiveTokens_MapTokenAddedRemovedEvent;
 
             loadFonts();
+
+            loadTokenLibraryFiles();
         }
 
         private void loadFonts()
@@ -227,6 +230,8 @@ namespace DungeonsAndDoodles
                 TokenData newData = charForm.GetTokenData();
                 newData.CurrentHP = newData.MaxHP;
                 gameState.TokenLibrary.Add(ref newData);
+
+                newData.SaveToLibrary();
             }
         }
 
@@ -559,6 +564,17 @@ namespace DungeonsAndDoodles
             foreach (TokenListItemControl ctrl in activeTokenFlowPanel.Controls)
             {
                 ctrl.Selected = false;
+            }
+        }
+
+        private void loadTokenLibraryFiles()
+        {
+            string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + TokenData.TOKEN_LIBRARY_FOLDER);
+
+            foreach (string file in files)
+            {
+                TokenData loadedToken = TokenData.LoadFromFile(file);
+                gameState.TokenLibrary.Add(ref loadedToken);
             }
         }
     }

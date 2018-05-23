@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,8 @@ namespace DungeonsAndDoodles
     // Struct to hold basic token data
     public struct TokenData
     {
+        public static readonly string TOKEN_LIBRARY_FOLDER = "Token Library\\";
+
         private string name;
         private TokenType tokenType;
         private int maxHP;
@@ -130,6 +134,74 @@ namespace DungeonsAndDoodles
         {
             return this.name.GetHashCode();
         }
+
+        public void SaveToLibrary()
+        {
+            SaveToFile(AppDomain.CurrentDomain.BaseDirectory + TOKEN_LIBRARY_FOLDER + name + ".token");
+        }
+
+        public void SaveToFile(string filePath)
+        {
+            Dictionary<String, String> dataDict = new Dictionary<string, string>();
+
+            dataDict["name"] = name;
+            dataDict["type"] = tokenType.ToString();
+            dataDict["maxHP"] = maxHP.ToString();
+            dataDict["curHP"] = currentHP.ToString();
+            dataDict["armorClass"] = ArmorClass.ToString();
+            dataDict["strength"] = Strength.ToString();
+            dataDict["dexterity"] = Dexterity.ToString();
+            dataDict["constitution"] = Constitution.ToString();
+            dataDict["intelligence"] = Intelligence.ToString();
+            dataDict["wisdom"] = Wisdom.ToString();
+            dataDict["charisma"] = Charisma.ToString();
+            dataDict["notes"] = Notes;
+            dataDict["pictureFile"] = PictureFileName;
+
+            string rootDir = Path.GetPathRoot(filePath);
+            Directory.CreateDirectory(rootDir);
+
+
+            using (FileStream outputFile = File.OpenWrite(filePath))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+
+                bf.Serialize(outputFile, dataDict);
+            }
+        }
+
+        public static TokenData LoadFromFile(string filePath)
+        {
+            Dictionary<String, String> dataDict;
+
+            using (FileStream inputFile = File.OpenRead(filePath))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+
+                dataDict = (Dictionary<String, String>)bf.Deserialize(inputFile);
+            }
+
+            string name = dataDict["name"];
+            string type = dataDict["type"];
+
+            TokenData newData = new TokenData(name, (TokenType)TokenType.Parse(typeof(TokenType), type));
+
+
+            newData.MaxHP = Int32.Parse(dataDict["maxHP"]);
+            newData.CurrentHP = Int32.Parse(dataDict["curHP"]);
+            newData.ArmorClass = Int32.Parse(dataDict["armorClass"]);
+            newData.Strength = Int32.Parse(dataDict["strength"]);
+            newData.Dexterity = Int32.Parse(dataDict["dexterity"]);
+            newData.Constitution = Int32.Parse(dataDict["constitution"]);
+            newData.Intelligence = Int32.Parse(dataDict["intelligence"]);
+            newData.Wisdom = Int32.Parse(dataDict["wisdom"]);
+            newData.Charisma = Int32.Parse(dataDict["charisma"]);
+            newData.Notes = dataDict["notes"];
+            newData.PictureFileName = dataDict["pictureFile"];
+
+            return newData;
+        }
+
     }
 
     // ========================================================
