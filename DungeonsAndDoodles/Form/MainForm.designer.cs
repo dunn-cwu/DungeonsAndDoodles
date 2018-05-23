@@ -132,7 +132,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 340;
             this.mainSplitContainer.Size = new System.Drawing.Size(797, 566);
-            this.mainSplitContainer.SplitterDistance = 440;
+            this.mainSplitContainer.SplitterDistance = 438;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -161,7 +161,7 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.NumberOfDiceUpDown);
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightPanelSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelSplitContainer_Panel2_Paint);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(349, 564);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(351, 564);
             this.rightPanelSplitContainer.SplitterDistance = 440;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -175,7 +175,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(349, 440);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(351, 440);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -184,7 +184,7 @@
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(341, 414);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(343, 414);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@
             this.ActiveTokensPanel.Location = new System.Drawing.Point(3, 3);
             this.ActiveTokensPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ActiveTokensPanel.Name = "ActiveTokensPanel";
-            this.ActiveTokensPanel.Size = new System.Drawing.Size(335, 408);
+            this.ActiveTokensPanel.Size = new System.Drawing.Size(337, 408);
             this.ActiveTokensPanel.TabIndex = 0;
             // 
             // deselectAllActiveTokensBtn
@@ -239,7 +239,7 @@
             this.activeTokenFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.activeTokenFlowPanel.Location = new System.Drawing.Point(13, 82);
             this.activeTokenFlowPanel.Name = "activeTokenFlowPanel";
-            this.activeTokenFlowPanel.Size = new System.Drawing.Size(316, 268);
+            this.activeTokenFlowPanel.Size = new System.Drawing.Size(318, 268);
             this.activeTokenFlowPanel.TabIndex = 7;
             this.activeTokenFlowPanel.WrapContents = false;
             // 
@@ -344,7 +344,7 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(341, 414);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(343, 414);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             this.LibraryPanel.Location = new System.Drawing.Point(3, 3);
             this.LibraryPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LibraryPanel.Name = "LibraryPanel";
-            this.LibraryPanel.Size = new System.Drawing.Size(335, 408);
+            this.LibraryPanel.Size = new System.Drawing.Size(337, 408);
             this.LibraryPanel.TabIndex = 0;
             // 
             // ExportTokenButton
@@ -387,7 +387,7 @@
             this.tokenLibList.ItemHeight = 20;
             this.tokenLibList.Location = new System.Drawing.Point(7, 62);
             this.tokenLibList.Name = "tokenLibList";
-            this.tokenLibList.Size = new System.Drawing.Size(324, 264);
+            this.tokenLibList.Size = new System.Drawing.Size(326, 264);
             this.tokenLibList.TabIndex = 2;
             this.tokenLibList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tokenLibList_KeyDown);
             this.tokenLibList.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tokenLibList_PreviewKeyDown);
@@ -493,7 +493,7 @@
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
             this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(341, 414);
+            this.mapTabPage.Size = new System.Drawing.Size(343, 414);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -508,7 +508,7 @@
             this.MapPanel.Location = new System.Drawing.Point(3, 3);
             this.MapPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MapPanel.Name = "MapPanel";
-            this.MapPanel.Size = new System.Drawing.Size(335, 408);
+            this.MapPanel.Size = new System.Drawing.Size(337, 408);
             this.MapPanel.TabIndex = 0;
             // 
             // loadMapBackgroundBtn
@@ -517,7 +517,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loadMapBackgroundBtn.Location = new System.Drawing.Point(6, 11);
             this.loadMapBackgroundBtn.Name = "loadMapBackgroundBtn";
-            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(258, 26);
+            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(243, 26);
             this.loadMapBackgroundBtn.TabIndex = 0;
             this.loadMapBackgroundBtn.Text = "Load Map Background";
             this.loadMapBackgroundBtn.UseVisualStyleBackColor = true;
@@ -542,7 +542,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 141);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 323);
+            this.groupBox1.Size = new System.Drawing.Size(243, 323);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -566,7 +566,7 @@
             this.shiftGridRightBtn.Name = "shiftGridRightBtn";
             this.shiftGridRightBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridRightBtn.TabIndex = 19;
-            this.shiftGridRightBtn.Text = "->";
+            this.shiftGridRightBtn.Text = "▶";
             this.shiftGridRightBtn.UseVisualStyleBackColor = true;
             this.shiftGridRightBtn.Click += new System.EventHandler(this.shiftGridRightBtn_Click);
             // 
@@ -578,7 +578,8 @@
             this.shiftGridLeftBtn.Name = "shiftGridLeftBtn";
             this.shiftGridLeftBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridLeftBtn.TabIndex = 15;
-            this.shiftGridLeftBtn.Text = "<-";
+            this.shiftGridLeftBtn.Text = "◀";
+            this.shiftGridLeftBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.shiftGridLeftBtn.UseVisualStyleBackColor = true;
             this.shiftGridLeftBtn.Click += new System.EventHandler(this.shiftGridLeftBtn_Click);
             // 
@@ -589,7 +590,7 @@
             this.shiftGridDownBtn.Name = "shiftGridDownBtn";
             this.shiftGridDownBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridDownBtn.TabIndex = 17;
-            this.shiftGridDownBtn.Text = "\\/";
+            this.shiftGridDownBtn.Text = "▼";
             this.shiftGridDownBtn.UseVisualStyleBackColor = true;
             this.shiftGridDownBtn.Click += new System.EventHandler(this.shiftGridDownBtn_Click);
             // 
@@ -600,17 +601,18 @@
             this.shiftGridUpBtn.Name = "shiftGridUpBtn";
             this.shiftGridUpBtn.Size = new System.Drawing.Size(30, 30);
             this.shiftGridUpBtn.TabIndex = 16;
-            this.shiftGridUpBtn.Text = "/\\";
+            this.shiftGridUpBtn.Text = "▲";
             this.shiftGridUpBtn.UseVisualStyleBackColor = true;
             this.shiftGridUpBtn.Click += new System.EventHandler(this.shiftGridUpBtn_Click);
             // 
             // resetGridPosBtn
             // 
+            this.resetGridPosBtn.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetGridPosBtn.Location = new System.Drawing.Point(118, 55);
             this.resetGridPosBtn.Name = "resetGridPosBtn";
             this.resetGridPosBtn.Size = new System.Drawing.Size(30, 30);
             this.resetGridPosBtn.TabIndex = 15;
-            this.resetGridPosBtn.Text = "-";
+            this.resetGridPosBtn.Text = "↺";
             this.resetGridPosBtn.UseVisualStyleBackColor = true;
             this.resetGridPosBtn.Click += new System.EventHandler(this.resetGridPosBtn_Click);
             // 
@@ -622,7 +624,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(9, 242);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(243, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(228, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -646,7 +648,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(9, 188);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(243, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(228, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -668,7 +670,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(243, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(228, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -694,7 +696,7 @@
             this.viewGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewGroupBox.Location = new System.Drawing.Point(6, 45);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(258, 92);
+            this.viewGroupBox.Size = new System.Drawing.Size(243, 92);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -703,7 +705,7 @@
             // resetViewBtn
             // 
             this.resetViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.resetViewBtn.Location = new System.Drawing.Point(132, 48);
+            this.resetViewBtn.Location = new System.Drawing.Point(117, 48);
             this.resetViewBtn.Name = "resetViewBtn";
             this.resetViewBtn.Size = new System.Drawing.Size(120, 23);
             this.resetViewBtn.TabIndex = 4;
@@ -714,7 +716,7 @@
             // centerViewBtn
             // 
             this.centerViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.centerViewBtn.Location = new System.Drawing.Point(132, 19);
+            this.centerViewBtn.Location = new System.Drawing.Point(117, 19);
             this.centerViewBtn.Name = "centerViewBtn";
             this.centerViewBtn.Size = new System.Drawing.Size(120, 23);
             this.centerViewBtn.TabIndex = 3;
