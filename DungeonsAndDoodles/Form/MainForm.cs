@@ -110,8 +110,24 @@ namespace DungeonsAndDoodles
 
             if (openMapImageDialog.ShowDialog() == DialogResult.OK)
             {
+                string filePath = openMapImageDialog.FileName;
+                string fileName = Path.GetFileName(filePath);
+                string localPath = initialDir + "\\" + fileName;
+
                 gameState.MapImageFile = openMapImageDialog.FileName;
                 mapControl.UpdateBackground();
+
+                if (!File.Exists(localPath))
+                {
+                    try
+                    {
+                        File.Copy(filePath, localPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error copying background image into resources: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 

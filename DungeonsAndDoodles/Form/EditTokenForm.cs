@@ -13,11 +13,7 @@ namespace DungeonsAndDoodles
 {
     public partial class EditTokenForm : Form
     {
-        public static readonly string TOKENS_BASE_DIR = "Resource\\Tokens\\";
-        public static readonly string PLAYER_TOKENS_FOLDER = "Players\\";
-        public static readonly string ENEMIES_TOKENS_FOLDER = "Baddies\\";
-        public static readonly string NPC_TOKENS_FOLDER = "NPC\\";
-        public static readonly string[] VALID_FILE_EXTENSIONS = new string[] { ".bmp", ".jpg", ".jpeg", ".png", ".tif", ".tiff"};
+        
 
         private GameState gameState = null;
         private bool editingExistingToken = false;
@@ -138,14 +134,54 @@ namespace DungeonsAndDoodles
 
         private void charPic_DoubleClick(object sender, EventArgs e)
         {
-            getImageBrowser.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory + TOKENS_BASE_DIR;
+            string appBaseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            getImageBrowser.InitialDirectory = appBaseDir + getLocalImageDir();
 
             if (getImageBrowser.ShowDialog(this) == DialogResult.OK)
             {
-                image = getImageBrowser.FileName;
+                string fullNewPath = getImageBrowser.FileName;
+                string fileName = Path.GetFileName(fullNewPath);
+                string localPath = getLocalImageDir() + fileName;
+                string fullLocalPath = appBaseDir + localPath;
+
+                if (!File.Exists(fullLocalPath) || !FileCompare(fullLocalPath, fullNewPath))
+                {
+                    try
+                    {
+                        File.Copy(fullNewPath, fullLocalPath, false);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error copying token image into local resources: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                image = fileName;
                 loadImage();
                 usingDefaultImage = false;
             }
+        }
+
+        private string getLocalImageDir()
+        {
+            string localPath = TokenData.TOKEN_IMAGE_BASE_DIR;
+
+            if (playerType_rad.Checked)
+            {
+                localPath += TokenData.PLAYER_TOKENS_FOLDER;
+            }
+            else if (enemyType_rad.Checked)
+            {
+                localPath += TokenData.ENEMIES_TOKENS_FOLDER;
+            }
+            else
+            {
+                localPath += TokenData.NPC_TOKENS_FOLDER;
+            }
+
+            return localPath;
         }
 
         private void loadImage()
@@ -158,25 +194,12 @@ namespace DungeonsAndDoodles
 
             if (image == "") { return; }
 
-            charPic.Image = Bitmap.FromFile(image);
+            charPic.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + getLocalImageDir() + image);
         }
 
         private void setDefaultImage()
         {
-            string imgDir = TOKENS_BASE_DIR;
-
-            if (playerType_rad.Checked)
-            {
-                imgDir += PLAYER_TOKENS_FOLDER;
-            }
-            else if (enemyType_rad.Checked)
-            {
-                imgDir += ENEMIES_TOKENS_FOLDER;
-            }
-            else
-            {
-                imgDir += NPC_TOKENS_FOLDER;
-            }
+            string imgDir = AppDomain.CurrentDomain.BaseDirectory + getLocalImageDir();
 
             try
             {
@@ -186,7 +209,7 @@ namespace DungeonsAndDoodles
 
                 foreach (string file in files)
                 {
-                    if (File.Exists(file) && VALID_FILE_EXTENSIONS.Any(file.Contains))
+                    if (File.Exists(file) && TokenData.VALID_FILE_EXTENSIONS.Any(file.Contains))
                     {
                         imgFiles.Add(file);
                     }
@@ -196,7 +219,7 @@ namespace DungeonsAndDoodles
                 {
                     Random rand = new Random();
 
-                    image = imgFiles[rand.Next(0, imgFiles.Count)];
+                    image = Path.GetFileName(imgFiles[rand.Next(0, imgFiles.Count)]);
                     usingDefaultImage = true;
                 }
                 else
@@ -219,6 +242,11 @@ namespace DungeonsAndDoodles
             {
                 setDefaultImage();
             }
+            else
+            {
+                image = "";
+                loadImage();
+            }
         }
 
         private void enemyType_rad_CheckedChanged(object sender, EventArgs e)
@@ -226,6 +254,11 @@ namespace DungeonsAndDoodles
             if (usingDefaultImage)
             {
                 setDefaultImage();
+            }
+            else
+            {
+                image = "";
+                loadImage();
             }
         }
 
@@ -235,6 +268,63 @@ namespace DungeonsAndDoodles
             {
                 setDefaultImage();
             }
+            else
+            {
+                image = "";
+                loadImage();
+            }
+        }
+
+        // https://support.microsoft.com/en-us/help/320348/how-to-create-a-file-compare-function-in-visual-c
+        private bool FileCompare(string file1, string file2)
+        {
+            int file1byte;
+            int file2byte;
+            FileStream fs1;
+            FileStream fs2;
+
+            // Determine if the same file was referenced two times.
+            if (file1 == file2)
+            {
+                // Return true to indicate that the files are the same.
+                return true;
+            }
+
+            // Open the two files.
+            fs1 = new FileStream(file1, FileMode.Open);
+            fs2 = new FileStream(file2, FileMode.Open);
+
+            // Check the file sizes. If they are not the same, the files 
+            // are not the same.
+            if (fs1.Length != fs2.Length)
+            {
+                // Close the file
+                fs1.Close();
+                fs2.Close();
+
+                // Return false to indicate files are different
+                return false;
+            }
+
+            // Read and compare a byte from each file until either a
+            // non-matching set of bytes is found or until the end of
+            // file1 is reached.
+            do
+            {
+                // Read one byte from each file.
+                file1byte = fs1.ReadByte();
+                file2byte = fs2.ReadByte();
+            }
+            while ((file1byte == file2byte) && (file1byte != -1));
+
+            // Close the files.
+            fs1.Close();
+            fs2.Close();
+
+            // Return the success of the comparison. "file1byte" is 
+            // equal to "file2byte" at this point only if the files are 
+            // the same.
+            return ((file1byte - file2byte) == 0);
         }
     }
 }

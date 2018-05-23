@@ -27,6 +27,11 @@ namespace DungeonsAndDoodles
     public struct TokenData
     {
         public static readonly string TOKEN_LIBRARY_FOLDER = "Token Library\\";
+        public static readonly string TOKEN_IMAGE_BASE_DIR = "Resource\\Tokens\\";
+        public static readonly string PLAYER_TOKENS_FOLDER = "Players\\";
+        public static readonly string ENEMIES_TOKENS_FOLDER = "Baddies\\";
+        public static readonly string NPC_TOKENS_FOLDER = "NPC\\";
+        public static readonly string[] VALID_FILE_EXTENSIONS = new string[] { ".bmp", ".jpg", ".jpeg", ".png", ".tif", ".tiff" };
 
         private string name;
         private TokenType tokenType;
@@ -81,6 +86,30 @@ namespace DungeonsAndDoodles
             this.PictureFileName = other.PictureFileName;
         }
 
+        public string GetLocalImagePath()
+        {
+            return AppDomain.CurrentDomain.BaseDirectory + GetLocalImageDir() + PictureFileName;
+        }
+
+        public string GetLocalImageDir()
+        {
+            string localPath = TokenData.TOKEN_IMAGE_BASE_DIR;
+
+            if (tokenType == TokenType.Player)
+            {
+                localPath += TokenData.PLAYER_TOKENS_FOLDER;
+            }
+            else if (tokenType == TokenType.Enemy)
+            {
+                localPath += TokenData.ENEMIES_TOKENS_FOLDER;
+            }
+            else
+            {
+                localPath += TokenData.NPC_TOKENS_FOLDER;
+            }
+
+            return localPath;
+        }
 
         public string Name
         {
@@ -594,7 +623,7 @@ namespace DungeonsAndDoodles
                     resizedCharImage = null;
                 }
 
-                charImage = Bitmap.FromFile(tokenData.PictureFileName);
+                charImage = Bitmap.FromFile(tokenData.GetLocalImagePath());
 
                 control.UpdateData();
             }
