@@ -41,6 +41,13 @@ namespace DungeonsAndDoodles
             // Open map tab by default
             rightPanelTabControl.SelectedIndex = 2;
 
+            shiftGridUpBtn.Text = char.ConvertFromUtf32(0x2191);
+            shiftGridLeftBtn.Text = char.ConvertFromUtf32(0x2190);
+            shiftGridRightBtn.Text = char.ConvertFromUtf32(0x2192);
+            shiftGridDownBtn.Text = char.ConvertFromUtf32(0x2193);
+
+
+
             gridThicknessSlider.Minimum = 1;
             gridThicknessSlider.Maximum = MapControl.MAX_GRID_THICKNESS;
 
