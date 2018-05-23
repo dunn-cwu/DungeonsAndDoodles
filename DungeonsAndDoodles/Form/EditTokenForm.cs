@@ -101,9 +101,19 @@ namespace DungeonsAndDoodles
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (tokenNameBox.Text.Length < 3)
+            string tokenName = tokenNameBox.Text;
+
+            // Make sure token name is a valid file name
+            if (string.IsNullOrEmpty(tokenName) || tokenName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
-                MessageBox.Show("Please enter a valid token name (At least 3 characters).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Token name contains at least one invalid character. Please use only letters, spaces, or numbers for the token name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Make sure token name is a valid length
+            if (tokenName.Length < 3 || tokenName.Length > 20)
+            {
+                MessageBox.Show("Please enter a valid token name (3-20 characters).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

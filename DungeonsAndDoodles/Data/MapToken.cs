@@ -135,9 +135,19 @@ namespace DungeonsAndDoodles
             return this.name.GetHashCode();
         }
 
-        public void SaveToLibrary()
+        public bool SaveToLibrary()
         {
-            SaveToFile(AppDomain.CurrentDomain.BaseDirectory + TOKEN_LIBRARY_FOLDER + name + ".token");
+            try
+            {
+                SaveToFile(AppDomain.CurrentDomain.BaseDirectory + TOKEN_LIBRARY_FOLDER + name + ".token");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error saving token to token library.\n\nToken: " + name + "\nError Message: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         public void SaveToFile(string filePath)
@@ -167,6 +177,20 @@ namespace DungeonsAndDoodles
                 BinaryFormatter bf = new BinaryFormatter();
 
                 bf.Serialize(outputFile, dataDict);
+            }
+        }
+
+        public void DeleteFileFromLibrary()
+        {
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + TOKEN_LIBRARY_FOLDER + name + ".token";
+
+            try
+            {
+                File.Delete(filePath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error deleting token library file: " + name + ".token", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

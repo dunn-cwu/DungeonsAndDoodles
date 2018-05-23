@@ -256,6 +256,8 @@ namespace DungeonsAndDoodles
                 tokenData = charForm.GetTokenData();
                 tokenData.CurrentHP = tokenData.MaxHP;
                 gameState.TokenLibrary[tokenData.Name] = tokenData;
+
+                tokenData.SaveToLibrary();
             }
         }
 
@@ -374,6 +376,8 @@ namespace DungeonsAndDoodles
                     if (ans == DialogResult.Yes)
                     {
                         gameState.TokenLibrary.Remove(ref selectedToken);
+                        selectedToken.DeleteFileFromLibrary();
+
                         refreshTokenLibList();
                     }
                     break;
@@ -569,12 +573,33 @@ namespace DungeonsAndDoodles
 
         private void loadTokenLibraryFiles()
         {
-            string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + TokenData.TOKEN_LIBRARY_FOLDER);
+            string[] files;
+
+            try
+            {
+                files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + TokenData.TOKEN_LIBRARY_FOLDER);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                // Token library folder not found
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + TokenData.TOKEN_LIBRARY_FOLDER);
+                return;
+            }
 
             foreach (string file in files)
             {
-                TokenData loadedToken = TokenData.LoadFromFile(file);
-                gameState.TokenLibrary.Add(ref loadedToken);
+                if (Path.GetExtension(file) == ".token")
+                {
+                    try
+                    {
+                        TokenData loadedToken = TokenData.LoadFromFile(file);
+                        gameState.TokenLibrary.Add(ref loadedToken);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error loading token from file: " + file);
+                    }
+                }
             }
         }
     }
