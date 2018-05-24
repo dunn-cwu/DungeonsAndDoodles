@@ -181,21 +181,7 @@ namespace DungeonsAndDoodles
 
         public void SaveToFile(string filePath)
         {
-            Dictionary<String, String> dataDict = new Dictionary<string, string>();
-
-            dataDict["name"] = name;
-            dataDict["type"] = tokenType.ToString();
-            dataDict["maxHP"] = maxHP.ToString();
-            dataDict["curHP"] = currentHP.ToString();
-            dataDict["armorClass"] = ArmorClass.ToString();
-            dataDict["strength"] = Strength.ToString();
-            dataDict["dexterity"] = Dexterity.ToString();
-            dataDict["constitution"] = Constitution.ToString();
-            dataDict["intelligence"] = Intelligence.ToString();
-            dataDict["wisdom"] = Wisdom.ToString();
-            dataDict["charisma"] = Charisma.ToString();
-            dataDict["notes"] = Notes;
-            dataDict["pictureFile"] = PictureFileName;
+            Dictionary<String, String> dataDict = ToDictionary();
 
             string rootDir = Path.GetPathRoot(filePath);
             Directory.CreateDirectory(rootDir);
@@ -234,11 +220,36 @@ namespace DungeonsAndDoodles
                 dataDict = (Dictionary<String, String>)bf.Deserialize(inputFile);
             }
 
+            return FromDictionary(dataDict);
+        }
+
+        public Dictionary<String, String> ToDictionary()
+        {
+            Dictionary<String, String> dataDict = new Dictionary<string, string>();
+
+            dataDict["name"] = name;
+            dataDict["type"] = tokenType.ToString();
+            dataDict["maxHP"] = maxHP.ToString();
+            dataDict["curHP"] = currentHP.ToString();
+            dataDict["armorClass"] = ArmorClass.ToString();
+            dataDict["strength"] = Strength.ToString();
+            dataDict["dexterity"] = Dexterity.ToString();
+            dataDict["constitution"] = Constitution.ToString();
+            dataDict["intelligence"] = Intelligence.ToString();
+            dataDict["wisdom"] = Wisdom.ToString();
+            dataDict["charisma"] = Charisma.ToString();
+            dataDict["notes"] = Notes;
+            dataDict["pictureFile"] = PictureFileName;
+
+            return dataDict;
+        }
+
+        public static TokenData FromDictionary(Dictionary<String, String> dataDict)
+        {
             string name = dataDict["name"];
             string type = dataDict["type"];
 
             TokenData newData = new TokenData(name, (TokenType)TokenType.Parse(typeof(TokenType), type));
-
 
             newData.MaxHP = Int32.Parse(dataDict["maxHP"]);
             newData.CurrentHP = Int32.Parse(dataDict["curHP"]);
@@ -254,7 +265,6 @@ namespace DungeonsAndDoodles
 
             return newData;
         }
-
     }
 
     // ========================================================
@@ -315,7 +325,7 @@ namespace DungeonsAndDoodles
 
         public GameState GameState
         {
-            get { return mapCtrl.GameState; } 
+            get { return mapCtrl.GameState; }
         }
 
         public void SetTokenData(ref TokenData otherData)
@@ -370,6 +380,12 @@ namespace DungeonsAndDoodles
             get { return tokenData.TokenType; }
         }
 
+        public float Scale
+        {
+            get { return scale; }
+            set { scale = value; }
+        }
+
         public PointF Position
         {
             get { return this.position; }
@@ -393,7 +409,7 @@ namespace DungeonsAndDoodles
                     newPos.Y = (float)Math.Floor(newPos.Y - mapCtrl.GridVerticalOffset) + 0.5f + mapCtrl.GridVerticalOffset;
 
                     // Walk token back onto map
-                    while(newPos.X < 0)
+                    while (newPos.X < 0)
                     {
                         newPos.X += 1.0f;
                     }
@@ -418,7 +434,7 @@ namespace DungeonsAndDoodles
                 {
                     mapCtrl.RedrawNeeded = true;
                     this.position = newPos;
-                }      
+                }
             }
         }
 
@@ -452,7 +468,7 @@ namespace DungeonsAndDoodles
 
             bool loaded = charImage != null;
 
-            if(!loaded && !imageLoadFailed)
+            if (!loaded && !imageLoadFailed)
             {
                 loaded = loadTokenImage();
             }
@@ -610,7 +626,8 @@ namespace DungeonsAndDoodles
 
         private bool loadTokenImage()
         {
-            try {
+            try
+            {
                 if (charImage != null)
                 {
                     charImage.Dispose();
@@ -627,7 +644,7 @@ namespace DungeonsAndDoodles
 
                 control.UpdateData();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -651,6 +668,32 @@ namespace DungeonsAndDoodles
             }
 
             resizedCharImage = spriteResized;
+        }
+
+        public Dictionary<String, String> ToDictionary()
+        {
+            Dictionary<String, String> dict = tokenData.ToDictionary();
+
+            dict["posX"] = position.X.ToString();
+            dict["posY"] = position.Y.ToString();
+            dict["scale"] = scale.ToString();
+
+            return dict;
+        }
+
+        public static MapToken FromDictionary(Dictionary<String, String> dict, MapControl mapCtrl)
+        {
+            TokenData newData = TokenData.FromDictionary(dict);
+
+            PointF pos = new PointF();
+
+            pos.X = float.Parse(dict["posX"]);
+            pos.Y = float.Parse(dict["posY"]);
+
+            MapToken newToken = new MapToken(mapCtrl, ref newData, pos);
+            newToken.Scale = float.Parse(dict["scale"]);
+
+            return newToken;
         }
     }
 

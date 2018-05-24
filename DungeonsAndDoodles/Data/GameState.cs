@@ -11,6 +11,7 @@ namespace DungeonsAndDoodles
     // Stores data that is shared between classes and UI elements
     public class GameState
     {
+        public string SavedStateFilePath = null;
         public string MapImageFile = null;
         public PrivateFontCollection FontCollection;
         public FontFamily MapFontFamily;

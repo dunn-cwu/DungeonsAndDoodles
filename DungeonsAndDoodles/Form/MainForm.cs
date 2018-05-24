@@ -8,16 +8,24 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DungeonsAndDoodles
 {
+    [Serializable]
+    public struct SavedGameState
+    {
+        public List<Dictionary<string, string>> ActiveTokens { get; set; }
+        public Dictionary<string, string> MapSettings { get; set; }
+    }
+
     public partial class MainForm : Form
     {
-        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_ONE = Color.PeachPuff;
-        private static readonly Color ACTIVE_TOKEN_LIST_COLOR_TWO = Color.White;
+        public static readonly Color ACTIVE_TOKEN_LIST_COLOR_ONE = Color.PeachPuff;
+        public static readonly Color ACTIVE_TOKEN_LIST_COLOR_TWO = Color.White;
 
         private MapControl mapControl;
         private GameState gameState;
@@ -105,7 +113,7 @@ namespace DungeonsAndDoodles
 
         private void loadMapBackgroundBtn_Click(object sender, EventArgs e)
         {
-            string initialDir = AppDomain.CurrentDomain.BaseDirectory + "Resource\\Maps";
+            string initialDir = AppDomain.CurrentDomain.BaseDirectory + MapControl.MAP_BACKGROUND_DIR;
             openMapImageDialog.InitialDirectory = initialDir;
 
             if (openMapImageDialog.ShowDialog() == DialogResult.OK)
@@ -113,10 +121,7 @@ namespace DungeonsAndDoodles
                 string filePath = openMapImageDialog.FileName;
                 string fileName = Path.GetFileName(filePath);
                 string localPath = initialDir + "\\" + fileName;
-
-                gameState.MapImageFile = openMapImageDialog.FileName;
-                mapControl.UpdateBackground();
-
+                
                 if (!File.Exists(localPath))
                 {
                     try
@@ -126,8 +131,12 @@ namespace DungeonsAndDoodles
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error copying background image into resources: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                 }
+
+                gameState.MapImageFile = fileName;
+                mapControl.UpdateBackground();
             }
         }
 
@@ -687,6 +696,117 @@ namespace DungeonsAndDoodles
                     }
                 }
             }
+        }
+
+        private void saveGameState(string filePath)
+        {
+            SavedGameState saveState = new SavedGameState();
+            saveState.ActiveTokens = new List<Dictionary<string, string>>();
+            saveState.MapSettings = new Dictionary<string, string>();
+
+            mapControl.SaveStateToDict(saveState.MapSettings);
+
+            foreach (MapToken mapToken in gameState.ActiveTokens)
+            {
+                saveState.ActiveTokens.Add(mapToken.ToDictionary());
+            }
+
+            using (FileStream outputFile = File.OpenWrite(filePath))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+
+                bf.Serialize(outputFile, saveState);
+            }
+
+            gameState.SavedStateFilePath = filePath;
+
+        }
+
+        private void loadGameState(string filePath)
+        {
+            SavedGameState savedState;
+
+            using (FileStream inputFile = File.OpenRead(filePath))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+
+                savedState = (SavedGameState)bf.Deserialize(inputFile);
+            }
+
+            mapControl.LoadStateFromDict(savedState.MapSettings);
+
+            gameState.ActiveTokens.Clear();
+
+            foreach (var tokDict in savedState.ActiveTokens)
+            {
+                MapToken newTok = MapToken.FromDictionary(tokDict, mapControl);
+                gameState.ActiveTokens.Add(newTok);
+            }
+
+            snapTokensToGridCheckbox.Checked = mapControl.TokenSnapToGrid;
+            gridAlphaSlider.Value = 255 - mapControl.GridTransparency;
+            gridScaleSlider.Value = mapControl.GridScale;
+            gridThicknessSlider.Value = mapControl.GridThickness;
+
+            gameState.SavedStateFilePath = filePath;
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveGameStateDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    saveGameState(saveGameStateDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saving game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (loadGameStateDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    loadGameState(loadGameStateDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(gameState.SavedStateFilePath))
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
+                return;
+            }
+
+            try
+            {
+                saveGameState(gameState.SavedStateFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapControl.Reset();
+
+            snapTokensToGridCheckbox.Checked = mapControl.TokenSnapToGrid;
+            gridAlphaSlider.Value = 255 - mapControl.GridTransparency;
+            gridScaleSlider.Value = mapControl.GridScale;
+            gridThicknessSlider.Value = mapControl.GridThickness;
         }
     }
 }

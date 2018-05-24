@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -26,6 +27,7 @@ namespace DungeonsAndDoodles
         public static readonly float PAN_STEP = 0.1f;
         public static readonly float MAX_ZOOM = (float)Math.Pow(ZOOM_STEP, 8);
         public static readonly float MIN_ZOOM = (float)Math.Pow(ZOOM_STEP, -4);
+        public static readonly string MAP_BACKGROUND_DIR = "Resource\\Maps\\";
 
         private readonly object drawMutex = new object();
         private GameState gameState;
@@ -86,6 +88,23 @@ namespace DungeonsAndDoodles
             }
         }
 
+        public void Reset()
+        {
+            gameState.MapImageFile = null;
+
+            gameState.ActiveTokens.Clear();
+
+            tokenSnapToGrid = false;
+            gridAlpha = 255;
+            gridThickness = 1;
+            gridScale = MIN_GRID_SCALE;
+            gridColor = Color.Black;
+            gridHorzOffset = 0.0f;
+            gridVertOffset = 0.0f;
+
+            UpdateBackground();
+        }
+
 		public Color GridLineColor
 		{
 			get { return gridColor; }
@@ -111,12 +130,14 @@ namespace DungeonsAndDoodles
         // in gameState.MapImageFile
         public bool UpdateBackground()
         {
-            // File name string is empty
-            if (gameState.MapImageFile.Length == 0) { return false; }
-
             try
             {
-                Image newBck = Bitmap.FromFile(gameState.MapImageFile);
+                Image newBck = null;
+
+                if (!string.IsNullOrEmpty(gameState.MapImageFile))
+                {
+                    newBck = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + MapControl.MAP_BACKGROUND_DIR + gameState.MapImageFile);
+                }
 
                 // Dispose of old images
                 if (mapImage != null)
@@ -243,7 +264,7 @@ namespace DungeonsAndDoodles
         // Property for Grid Scale
         public int GridScale
         {
-            get { return gridScale; }
+            get { return calcGridScaleFactor(gridScale); }
             set
             {
                 int oldScale = gridScale;
@@ -376,6 +397,13 @@ namespace DungeonsAndDoodles
         private static int calcGridScale(int factor)
         {
             return (int)Math.Round(Math.Pow(1.25, factor));
+        }
+
+        // Calculates a grid scale based off of the given scale factor
+        private static int calcGridScaleFactor(int scale)
+        {
+            double factor = Math.Log(scale) / Math.Log(1.25);
+            return (int)Math.Round(factor);
         }
 
         // Repositions all tokens on the map so that they stay in the same
@@ -976,6 +1004,43 @@ namespace DungeonsAndDoodles
         private void MapControl_MouseHover(object sender, EventArgs e)
 		{ 
 
+        }
+
+        public void SaveStateToDict(Dictionary<string, string> dict)
+        {
+            dict["mapFile"] = gameState.MapImageFile;
+            dict["zoomFactor"] = ZoomFactor.ToString();
+            dict["viewPosX"] = viewPosX.ToString();
+            dict["viewPosY"] = viewPosY.ToString();
+            dict["gridThickness"] = GridThickness.ToString();
+            dict["gridScale"] = GridScale.ToString();
+            dict["gridHorzOffset"] = GridHorizontalOffset.ToString();
+            dict["gridVertOffset"] = GridVerticalOffset.ToString();
+            dict["gridAlpha"] = GridTransparency.ToString();
+            dict["gridColor"] = GridLineColor.ToArgb().ToString();
+            dict["snapToGrid"] = TokenSnapToGrid.ToString();
+        }
+
+        public void LoadStateFromDict(Dictionary<string, string> dict)
+        {
+            gameState.MapImageFile = dict["mapFile"];
+
+            UpdateBackground();
+
+            GridThickness = Int32.Parse(dict["gridThickness"]);
+            GridScale = Int32.Parse(dict["gridScale"]);
+            GridHorizontalOffset = float.Parse(dict["gridHorzOffset"]);
+            GridVerticalOffset = float.Parse(dict["gridVertOffset"]);
+            GridTransparency = Int32.Parse(dict["gridAlpha"]);
+            GridLineColor = Color.FromArgb(Int32.Parse(dict["gridColor"]));
+            TokenSnapToGrid = bool.Parse(dict["snapToGrid"]);
+
+            ZoomFactor = float.Parse(dict["zoomFactor"]);
+
+            float viewX = float.Parse(dict["viewPosX"]);
+            float viewY = float.Parse(dict["viewPosY"]);
+
+            ViewPosition = new PointF(viewX, viewY);
         }
     }
 }

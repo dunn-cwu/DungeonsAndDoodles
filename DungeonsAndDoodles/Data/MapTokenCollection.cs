@@ -105,6 +105,17 @@ namespace DungeonsAndDoodles
             return Remove(index);
         }
 
+        public bool Clear()
+        {
+            if (mapTokenList.Count == 0) { return false; }
+
+            mapTokenList.Clear();
+
+            onMapTokenAddedRemoved(null);
+
+            return true;
+        }
+
         public bool Remove(int index)
         {
             if (index < 0 || index >= mapTokenList.Count) { return false; }
