@@ -69,7 +69,9 @@ namespace DungeonsAndDoodles
 
             if (token.CurrentHP < token.MaxHP)
             {
+                healthEditMode = false;
                 token.CurrentHP += 1;
+                UpdateData();
             }
         }
 
@@ -78,7 +80,9 @@ namespace DungeonsAndDoodles
 
             if (token.CurrentHP > 0)
             {
+                healthEditMode = false;
                 token.CurrentHP -= 1;
+                UpdateData();
             }
         }
 
@@ -100,7 +104,7 @@ namespace DungeonsAndDoodles
 
         private void TokenListItemControl_MouseLeave(object sender, EventArgs e)
         {
-            UpdateData();
+            // UpdateData();
         }
 
         private void HealthBox_KeyDown(object sender, KeyEventArgs e)
@@ -129,42 +133,6 @@ namespace DungeonsAndDoodles
             }
         }
 
-        private void updateHealthBox()
-        {
-            if (!healthEditMode) { return; }
-
-            HealthBox.DeselectAll();
-            HPMinus.Select();
-            healthEditMode = false;
-
-            try
-            {
-                if (Convert.ToInt32(HealthBox.Text) >= 0 || Convert.ToInt32(HealthBox.Text) <= token.MaxHP) { }
-
-                token.CurrentHP = Convert.ToInt32(HealthBox.Text);
-                HealthBox.Text = token.CurrentHP + " / " + token.MaxHP;
-
-                if (token.CurrentHP >= token.MaxHP / 3)
-                {
-                    HealthBox.BackColor = Color.Lime;
-                }
-                else if (token.CurrentHP >= token.MaxHP / 10)
-                {
-                    HealthBox.BackColor = Color.Orange;
-                }
-                else
-                {
-                    HealthBox.BackColor = Color.Red;
-                }
-            }
-
-
-            catch (Exception a)
-            {
-                HealthBox.Text = token.CurrentHP + " / " + token.MaxHP;
-            }
-        }
-
         public void UpdateData()
         {
             TokenData data = token.GetTokenData();
@@ -185,13 +153,15 @@ namespace DungeonsAndDoodles
 
             TokenCharisma.Text = "CHA: " + data.Charisma;
 
-            HealthBox.Text = data.CurrentHP + " / " + data.MaxHP;
+            checkHpBoxEditMode();
 
-            if (data.CurrentHP >= data.MaxHP / 2)
+            HealthBox.Text = token.CurrentHP + " / " + token.MaxHP + " HP";
+
+            if (token.CurrentHP > token.MaxHP / 2)
             {
                 HealthBox.BackColor = Color.Lime;
             }
-            else if (data.CurrentHP >= data.MaxHP / 10)
+            else if (token.CurrentHP > 0)
             {
                 HealthBox.BackColor = Color.Orange;
             }
@@ -199,8 +169,6 @@ namespace DungeonsAndDoodles
             {
                 HealthBox.BackColor = Color.Red;
             }
-
-            updateHealthBox();
 
             if (token.Image != null)
             {
@@ -212,6 +180,28 @@ namespace DungeonsAndDoodles
             }
 
             this.Refresh();
+        }
+
+        private void checkHpBoxEditMode()
+        {
+            if (!healthEditMode) { return; }
+
+            HealthBox.DeselectAll();
+            HPMinus.Select();
+            healthEditMode = false;
+
+            try
+            {
+                int newHp = Convert.ToInt32(HealthBox.Text);
+
+                if (newHp >= 0 && newHp <= token.MaxHP)
+                {
+                    token.CurrentHP = Convert.ToInt32(HealthBox.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void TokenListItemControl_Click(object sender, EventArgs e)
@@ -237,6 +227,11 @@ namespace DungeonsAndDoodles
                 tokenData = charForm.GetTokenData();
                 token.SetTokenData(ref tokenData);
             }
+        }
+
+        private void TokenConstitution_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

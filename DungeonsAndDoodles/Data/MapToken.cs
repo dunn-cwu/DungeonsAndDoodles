@@ -640,14 +640,17 @@ namespace DungeonsAndDoodles
                     resizedCharImage = null;
                 }
 
-                charImage = Bitmap.FromFile(tokenData.GetLocalImagePath());
-
-                control.UpdateData();
+                using (FileStream fStream = new FileStream(tokenData.GetLocalImagePath(), FileMode.Open))
+                {
+                    charImage = Bitmap.FromStream(fStream);
+                }   
             }
             catch (Exception e)
             {
                 return false;
             }
+
+            control.UpdateData();
 
             return true;
         }

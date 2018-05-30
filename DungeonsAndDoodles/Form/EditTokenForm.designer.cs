@@ -57,6 +57,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.getImageBrowser = new System.Windows.Forms.OpenFileDialog();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charPic)).BeginInit();
             this.CharStats.SuspendLayout();
@@ -122,9 +123,10 @@
             // charPic
             // 
             this.charPic.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.charPic.Location = new System.Drawing.Point(12, 12);
+            this.charPic.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.charPic.Location = new System.Drawing.Point(15, 24);
             this.charPic.Name = "charPic";
-            this.charPic.Size = new System.Drawing.Size(145, 145);
+            this.charPic.Size = new System.Drawing.Size(142, 133);
             this.charPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.charPic.TabIndex = 2;
             this.charPic.TabStop = false;
@@ -132,7 +134,7 @@
             // 
             // tokenNameBox
             // 
-            this.tokenNameBox.Location = new System.Drawing.Point(207, 21);
+            this.tokenNameBox.Location = new System.Drawing.Point(207, 31);
             this.tokenNameBox.Name = "tokenNameBox";
             this.tokenNameBox.Size = new System.Drawing.Size(255, 20);
             this.tokenNameBox.TabIndex = 3;
@@ -140,7 +142,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 24);
+            this.label1.Location = new System.Drawing.Point(166, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
@@ -336,11 +338,11 @@
             // 
             this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 23);
+            this.label2.Location = new System.Drawing.Point(52, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Health Points";
+            this.label2.Text = "Max Health Points";
             // 
             // tokenHPBox
             // 
@@ -401,11 +403,22 @@
             // 
             this.getImageBrowser.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(0, 8);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(179, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Double Click Image to Change";
+            // 
             // EditTokenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 513);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label10);
@@ -418,6 +431,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "EditTokenForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Token";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -468,5 +482,6 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.OpenFileDialog getImageBrowser;
+        private System.Windows.Forms.Label label11;
     }
 }

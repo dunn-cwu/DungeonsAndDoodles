@@ -12,6 +12,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DungeonsAndDoodles
 {
@@ -142,11 +143,15 @@ namespace DungeonsAndDoodles
 
         private void zoomInBtn_Click(object sender, EventArgs e)
         {
+            if (mapControl.IsUpdating) { return; }
+
             mapControl.ZoomIn();
         }
 
         private void zoomOutBtn_Click(object sender, EventArgs e)
         {
+            if (mapControl.IsUpdating) { return; }
+
             mapControl.ZoomOut();
         }
 
@@ -380,6 +385,11 @@ namespace DungeonsAndDoodles
                     e.IsInputKey = true;
                     break;
             }
+        }
+
+        private void tokenLibList_DoubleClick(object sender, EventArgs e)
+        {
+            placeTokenOnMapBtn_Click(sender, e);
         }
 
         private void tokenLibList_KeyDown(object sender, KeyEventArgs e)
@@ -801,12 +811,21 @@ namespace DungeonsAndDoodles
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mapControl.Reset();
+            if (MessageBox.Show("Are you sure you want to clear the current map?\n" +
+                "Any unsaved changes will be lost.", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                mapControl.Reset();
 
-            snapTokensToGridCheckbox.Checked = mapControl.TokenSnapToGrid;
-            gridAlphaSlider.Value = 255 - mapControl.GridTransparency;
-            gridScaleSlider.Value = mapControl.GridScale;
-            gridThicknessSlider.Value = mapControl.GridThickness;
+                snapTokensToGridCheckbox.Checked = mapControl.TokenSnapToGrid;
+                gridAlphaSlider.Value = 255 - mapControl.GridTransparency;
+                gridScaleSlider.Value = mapControl.GridScale;
+                gridThicknessSlider.Value = mapControl.GridThickness;
+            }
+        }
+
+        private void toggleSidePanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainSplitContainer.Panel2Collapsed = !mainSplitContainer.Panel2Collapsed;
         }
     }
 }

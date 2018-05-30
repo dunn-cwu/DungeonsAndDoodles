@@ -194,7 +194,19 @@ namespace DungeonsAndDoodles
 
             if (image == "") { return; }
 
-            charPic.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + getLocalImageDir() + image);
+            try
+            {
+                using (FileStream fStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory + getLocalImageDir() + image, FileMode.Open))
+                {
+                    charPic.Image = Bitmap.FromStream(fStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading image: " + ex.Message);
+                charPic.Image = null;
+                image = "";
+            }
         }
 
         private void setDefaultImage()

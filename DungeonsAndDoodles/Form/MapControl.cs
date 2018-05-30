@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DungeonsAndDoodles
@@ -36,11 +37,12 @@ namespace DungeonsAndDoodles
         private MapToken rightClickedToken = null;
         private MouseDragState mouseDragState;
         private Point mouseDownPos;
-        Stopwatch mouseDownTimer = new Stopwatch();
+        private Stopwatch mouseDownTimer = new Stopwatch();
         private bool leftMouseDown = false;
         private bool redrawNeeded = false;
         private bool tokenSnapToGrid = false;
         private bool showTokenLabels = true;
+        private bool isUpdating = false;
         private Image mapImage = null;
         private Image mapImageSized = null;
         private int gridAlpha = 255;
@@ -52,7 +54,7 @@ namespace DungeonsAndDoodles
         private float viewPosX = 0.0f;
         private float viewPosY = 0.0f;
 		private Color gridColor = Color.Black;
-
+        
         public MapControl(GameState gameState)
         {
             InitializeComponent();
@@ -105,6 +107,8 @@ namespace DungeonsAndDoodles
             UpdateBackground();
         }
 
+        public bool IsUpdating { get => isUpdating; }
+
 		public Color GridLineColor
 		{
 			get { return gridColor; }
@@ -136,7 +140,10 @@ namespace DungeonsAndDoodles
 
                 if (!string.IsNullOrEmpty(gameState.MapImageFile))
                 {
-                    newBck = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + MapControl.MAP_BACKGROUND_DIR + gameState.MapImageFile);
+                    using (FileStream fStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory + MapControl.MAP_BACKGROUND_DIR + gameState.MapImageFile, FileMode.Open))
+                    {
+                        newBck = Bitmap.FromStream(fStream);
+                    }
                 }
 
                 // Dispose of old images
@@ -431,6 +438,8 @@ namespace DungeonsAndDoodles
         {
             lock (drawMutex)
             {
+                isUpdating = true;
+
                 base.OnPaint(e);
 
                 ResizeMapImage();
@@ -453,6 +462,8 @@ namespace DungeonsAndDoodles
                 drawGridLines(e, ref viewportRect);
                 drawTokens(e, ref viewportRect);
                 if (showTokenLabels) { drawTokenLabels(e, ref viewportRect);  }
+
+                isUpdating = false;
             }
         }
 
