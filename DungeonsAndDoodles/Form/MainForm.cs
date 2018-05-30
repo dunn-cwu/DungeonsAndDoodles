@@ -814,6 +814,8 @@ namespace DungeonsAndDoodles
             if (MessageBox.Show("Are you sure you want to clear the current map?\n" +
                 "Any unsaved changes will be lost.", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                gameState.SavedStateFilePath = null;
+
                 mapControl.Reset();
 
                 snapTokensToGridCheckbox.Checked = mapControl.TokenSnapToGrid;
