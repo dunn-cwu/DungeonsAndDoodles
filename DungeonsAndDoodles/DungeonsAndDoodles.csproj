@@ -176,27 +176,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resource\Maps\a nice map.png">
+    <None Include="Resource\Maps\Example Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resource\Tokens\Players\green player.png">
+    <None Include="Resource\Tokens\Players\Green Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\no background player.png">
+    <None Include="Resource\Tokens\Players\Transparent Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\orange player.png">
+    <None Include="Resource\Tokens\Players\Orange Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\purple player.png">
+    <None Include="Resource\Tokens\Players\Purple Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\red player.png">
+    <None Include="Resource\Tokens\Players\Red Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\yellow player.png">
+    <None Include="Resource\Tokens\Players\Yellow Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -216,41 +216,36 @@
     <None Include="Resource\Tokens\NPC\Red NPC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\NPC\Transparency NPC.png">
+    <None Include="Resource\Tokens\NPC\Transparent NPC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resource\Tokens\NPC\Yellow NPC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Players\blue player.png">
+    <None Include="Resource\Tokens\Players\Blue Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resource\Maps\bld_farmhouse-ground-floor.jpg">
+    <None Include="Resource\Tokens\Enemies\Green Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resource\Tokens\Baddies\green baddy.png">
+    <None Include="Resource\Tokens\Enemies\Orange Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Baddies\orange baddy.png">
+    <None Include="Resource\Tokens\Enemies\Purple Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Baddies\purple baddy.png">
+    <None Include="Resource\Tokens\Enemies\Red Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Baddies\red baddy.png">
+    <None Include="Resource\Tokens\Enemies\Teal Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Baddies\teal baddy.png">
+    <None Include="Resource\Tokens\Enemies\Transparent Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\Tokens\Baddies\transparency baddy.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resource\Tokens\Baddies\yellow baddy.png">
+    <None Include="Resource\Tokens\Enemies\Yellow Enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -138,7 +138,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 340;
             this.mainSplitContainer.Size = new System.Drawing.Size(797, 566);
-            this.mainSplitContainer.SplitterDistance = 413;
+            this.mainSplitContainer.SplitterDistance = 411;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -168,7 +168,7 @@
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightPanelSplitContainer.Panel2.Font = new System.Drawing.Font("Constantia", 9.75F);
             this.rightPanelSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelSplitContainer_Panel2_Paint);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(376, 564);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(378, 564);
             this.rightPanelSplitContainer.SplitterDistance = 460;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -183,7 +183,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(376, 460);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(378, 460);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -192,7 +192,7 @@
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 24);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(368, 432);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(370, 432);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Tokens In Play";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             this.ActiveTokensPanel.Location = new System.Drawing.Point(3, 3);
             this.ActiveTokensPanel.Margin = new System.Windows.Forms.Padding(2);
             this.ActiveTokensPanel.Name = "ActiveTokensPanel";
-            this.ActiveTokensPanel.Size = new System.Drawing.Size(362, 426);
+            this.ActiveTokensPanel.Size = new System.Drawing.Size(364, 426);
             this.ActiveTokensPanel.TabIndex = 0;
             // 
             // deselectAllActiveTokensBtn
@@ -249,7 +249,7 @@
             this.activeTokenFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.activeTokenFlowPanel.Location = new System.Drawing.Point(15, 61);
             this.activeTokenFlowPanel.Name = "activeTokenFlowPanel";
-            this.activeTokenFlowPanel.Size = new System.Drawing.Size(332, 307);
+            this.activeTokenFlowPanel.Size = new System.Drawing.Size(334, 307);
             this.activeTokenFlowPanel.TabIndex = 7;
             this.activeTokenFlowPanel.WrapContents = false;
             // 
@@ -346,9 +346,9 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 24);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(368, 432);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(370, 432);
             this.tokenLibraryTabPage.TabIndex = 1;
-            this.tokenLibraryTabPage.Text = "Tokens in Storage";
+            this.tokenLibraryTabPage.Text = "Tokens In Storage";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
             // 
             // LibraryPanel
@@ -366,7 +366,7 @@
             this.LibraryPanel.Location = new System.Drawing.Point(3, 3);
             this.LibraryPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LibraryPanel.Name = "LibraryPanel";
-            this.LibraryPanel.Size = new System.Drawing.Size(362, 426);
+            this.LibraryPanel.Size = new System.Drawing.Size(364, 426);
             this.LibraryPanel.TabIndex = 0;
             // 
             // ExportTokenButton
@@ -393,7 +393,7 @@
             this.tokenLibList.ItemHeight = 18;
             this.tokenLibList.Location = new System.Drawing.Point(15, 61);
             this.tokenLibList.Name = "tokenLibList";
-            this.tokenLibList.Size = new System.Drawing.Size(332, 307);
+            this.tokenLibList.Size = new System.Drawing.Size(334, 307);
             this.tokenLibList.Sorted = true;
             this.tokenLibList.TabIndex = 2;
             this.tokenLibList.DoubleClick += new System.EventHandler(this.tokenLibList_DoubleClick);
@@ -507,7 +507,7 @@
             this.mapTabPage.Location = new System.Drawing.Point(4, 24);
             this.mapTabPage.Name = "mapTabPage";
             this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(368, 432);
+            this.mapTabPage.Size = new System.Drawing.Size(370, 432);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map Settings";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -522,7 +522,7 @@
             this.MapPanel.Location = new System.Drawing.Point(3, 3);
             this.MapPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MapPanel.Name = "MapPanel";
-            this.MapPanel.Size = new System.Drawing.Size(362, 426);
+            this.MapPanel.Size = new System.Drawing.Size(364, 426);
             this.MapPanel.TabIndex = 0;
             // 
             // loadMapBackgroundBtn
@@ -532,7 +532,7 @@
             this.loadMapBackgroundBtn.Font = new System.Drawing.Font("Constantia", 11F, System.Drawing.FontStyle.Bold);
             this.loadMapBackgroundBtn.Location = new System.Drawing.Point(15, 13);
             this.loadMapBackgroundBtn.Name = "loadMapBackgroundBtn";
-            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(327, 26);
+            this.loadMapBackgroundBtn.Size = new System.Drawing.Size(312, 26);
             this.loadMapBackgroundBtn.TabIndex = 0;
             this.loadMapBackgroundBtn.Text = "Load Map Background";
             this.loadMapBackgroundBtn.UseVisualStyleBackColor = true;
@@ -559,7 +559,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(15, 141);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 380);
+            this.groupBox1.Size = new System.Drawing.Size(312, 380);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -653,7 +653,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(6, 268);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(315, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(300, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -678,7 +678,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(6, 216);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(315, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(300, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -701,7 +701,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(315, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(300, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -729,7 +729,7 @@
             this.viewGroupBox.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold);
             this.viewGroupBox.Location = new System.Drawing.Point(15, 45);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(327, 92);
+            this.viewGroupBox.Size = new System.Drawing.Size(312, 92);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -739,7 +739,7 @@
             // 
             this.resetViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.resetViewBtn.Font = new System.Drawing.Font("Constantia", 9.75F);
-            this.resetViewBtn.Location = new System.Drawing.Point(201, 48);
+            this.resetViewBtn.Location = new System.Drawing.Point(186, 48);
             this.resetViewBtn.Name = "resetViewBtn";
             this.resetViewBtn.Size = new System.Drawing.Size(120, 23);
             this.resetViewBtn.TabIndex = 4;
@@ -751,7 +751,7 @@
             // 
             this.centerViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.centerViewBtn.Font = new System.Drawing.Font("Constantia", 9.75F);
-            this.centerViewBtn.Location = new System.Drawing.Point(201, 19);
+            this.centerViewBtn.Location = new System.Drawing.Point(186, 19);
             this.centerViewBtn.Name = "centerViewBtn";
             this.centerViewBtn.Size = new System.Drawing.Size(120, 23);
             this.centerViewBtn.TabIndex = 3;

@@ -29,7 +29,7 @@ namespace DungeonsAndDoodles
         public static readonly string TOKEN_LIBRARY_FOLDER = "Token Library\\";
         public static readonly string TOKEN_IMAGE_BASE_DIR = "Resource\\Tokens\\";
         public static readonly string PLAYER_TOKENS_FOLDER = "Players\\";
-        public static readonly string ENEMIES_TOKENS_FOLDER = "Baddies\\";
+        public static readonly string ENEMIES_TOKENS_FOLDER = "Enemies\\";
         public static readonly string NPC_TOKENS_FOLDER = "NPC\\";
         public static readonly string[] VALID_FILE_EXTENSIONS = new string[] { ".bmp", ".jpg", ".jpeg", ".png", ".tif", ".tiff" };
 
