@@ -75,6 +75,8 @@ namespace DungeonsAndDoodles
             loadFonts();
 
             loadTokenLibraryFiles();
+
+			mainSplitContainer.SplitterDistance = 410;
         }
 
         private void loadFonts()
@@ -829,5 +831,10 @@ namespace DungeonsAndDoodles
         {
             mainSplitContainer.Panel2Collapsed = !mainSplitContainer.Panel2Collapsed;
         }
-    }
+
+		private void MapPanel_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
